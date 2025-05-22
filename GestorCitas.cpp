@@ -420,6 +420,7 @@ void GestorCitas::mostrarCitas() const {
         return;
     }
     
+    
     citas.forEachRecursivo([](const Cita& cita) {
         cita.mostrarCita();
         cout << "-------------------------" << endl;
