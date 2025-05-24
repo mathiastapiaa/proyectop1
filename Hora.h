@@ -12,7 +12,7 @@ private:
     void validarHora() const;
 
 public:
-    Hora(int h = 0, int m = 0, int s = 0);
+    Hora(int h = -1, int m = -1, int s = -1);
     Hora(const Hora& otra);
     
     int getHora() const;

@@ -14,7 +14,7 @@ private:
     tm getFechaActual() const;
 
 public:
-    Fecha(int d = 1, int m = 1, int a = 2000);
+    Fecha(int d = 0, int m = 0, int a = 0);
     Fecha(const Fecha& otra);
 
     static Fecha fechaActual();

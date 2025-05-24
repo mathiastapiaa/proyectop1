@@ -9,7 +9,82 @@
 using namespace std;
 
 GestorCitas::GestorCitas(const string& archivo) : archivoCitas(archivo) {
+    inicializarFeriados();
     cargarCitas();
+}
+// Algoritmo de Meeus/Jones/Butcher para calcular la fecha de Pascua
+static Fecha calcularPascua(int anio) {
+    int a = anio % 19;
+    int b = anio / 100;
+    int c = anio % 100;
+    int d = b / 4;
+    int e = b % 4;
+    int f = (b + 8) / 25;
+    int g = (b - f + 1) / 3;
+    int h = (19 * a + b - d - g + 15) % 30;
+    int i = c / 4;
+    int k = c % 4;
+    int l = (32 + 2 * e + 2 * i - h - k) % 7;
+    int m = (a + 11 * h + 22 * l) / 451;
+    int mes = (h + l - 7 * m + 114) / 31;
+    int dia = ((h + l - 7 * m + 114) % 31) + 1;
+    return Fecha(dia, mes, anio);
+}
+
+void GestorCitas::inicializarFeriados() {
+    feriados.clear();
+    // Feriados nacionales fijos (día, mes)
+    feriados.push_back({1, 1});    // Año Nuevo
+    feriados.push_back({1, 5});    // Día del Trabajo
+    feriados.push_back({24, 5});   // Batalla de Pichincha
+    feriados.push_back({10, 8});   // Primer Grito de Independencia
+    feriados.push_back({9, 10});   // Independencia de Guayaquil
+    feriados.push_back({2, 11});   // Día de los Difuntos
+    feriados.push_back({3, 11});   // Independencia de Cuenca
+    feriados.push_back({25, 12});  // Navidad
+    // Feriados móviles: Carnaval, Viernes Santo, Domingo de Pascua
+    int anioActual = Fecha::fechaActual().getAnio();
+    for (int offset = -1; offset <= 1; ++offset) { // Para agendar con anticipación/futuro
+        int anio = anioActual + offset;
+        Fecha pascua = calcularPascua(anio);
+        // Carnaval: lunes y martes antes de Pascua (47 y 48 días antes)
+        for (int diasAntes : {48, 47}) {
+            int d = pascua.getDia(), m = pascua.getMes(), a = pascua.getAnio();
+            // Retroceder días
+            for (int i = 0; i < diasAntes; ++i) {
+                d--;
+                if (d < 1) {
+                    m--;
+                    if (m < 1) { m = 12; a--; }
+                    d = Fecha::diasEnMesStatic(m, a);
+                }
+            }
+            feriados.push_back({d, m});
+        }
+        // Viernes Santo: 2 días antes de Pascua
+        int d = pascua.getDia(), m = pascua.getMes(), a = pascua.getAnio();
+        for (int i = 0; i < 2; ++i) {
+            d--;
+            if (d < 1) {
+                m--;
+                if (m < 1) { m = 12; a--; }
+                d = Fecha::diasEnMesStatic(m, a);
+            }
+        }
+        feriados.push_back({d, m});
+        // Domingo de Pascua
+        feriados.push_back({pascua.getDia(), pascua.getMes()});
+    }
+}
+
+// Devuelve true si la fecha es feriado nacional
+bool GestorCitas::esFeriado(const Fecha& fecha) const {
+    int d = fecha.getDia();
+    int m = fecha.getMes();
+    for (const auto& f : feriados) {
+        if (f.first == d && f.second == m) return true;
+    }
+    return false;
 }
     
 GestorCitas::~GestorCitas() {
@@ -94,11 +169,15 @@ bool GestorCitas::esFinDeSemana(const Fecha& fecha) const {
 }
 
 bool GestorCitas::esDiaValido(const Fecha& fecha, Especialidad esp) const {
-    if(esFinDeSemana(fecha)) {
+    if (esFinDeSemana(fecha)) {
         cout << "No se agenda citas los fines de semana." << endl;
         return false;
     }
-    if(!validarFechaCita(fecha)) {
+    if (esFeriado(fecha)) {
+        cout << "No se agenda citas en días feriados nacionales." << endl;
+        return false;
+    }
+    if (!validarFechaCita(fecha)) {
         cout << "Fecha no valida." << endl;
         return false;
     }
@@ -143,7 +222,7 @@ Fecha GestorCitas::seleccionarFecha(Especialidad esp) {
             getch();
             mostrarMensaje = false;
         }
-        cout << "\nControles: WA - Cambiar Mes SD - Cambiar Anio, Enter - Seleccionar, ESC - Cancelar" << endl;
+        cout << "\nControles: WA - Cambiar Mes SD - Cambiar Anio, Enter - Seleccionar, C - Cancelar" << endl;
 
         int input = getch();
         switch (input) {
@@ -195,7 +274,11 @@ Fecha GestorCitas::seleccionarFecha(Especialidad esp) {
                 }
                 break;
             }
-            case 27: // ESC
+            case 'c':
+                system("cls||clear");
+                return Fecha();
+            case 'C':
+                system("cls||clear");
                 return Fecha();
         }
 
@@ -243,9 +326,10 @@ Hora GestorCitas::seleccionarHora(const Fecha& fecha, Especialidad esp) {
             getch();
             mostrarMensaje = false;
         }
-        cout << "\nControles: Flechas - Navegar, Enter - Seleccionar, ESC - Cancelar" << endl;
+        cout << "\nControles: Flechas - Navegar, Enter - Seleccionar, C - Cancelar" << endl;
 
         int input = getch();
+
         switch (input) {
             case 72: { // Flecha arriba
                 horaPos = max(0, horaPos - 4);
@@ -275,7 +359,11 @@ Hora GestorCitas::seleccionarHora(const Fecha& fecha, Especialidad esp) {
                 }
                 break;
             }
-            case 27: // ESC
+            case 'c':
+                system("cls||clear");
+                return Hora();
+            case 'C':
+                system("cls||clear");
                 return Hora();
         }
     }
@@ -283,42 +371,30 @@ Hora GestorCitas::seleccionarHora(const Fecha& fecha, Especialidad esp) {
 
 void GestorCitas::agendarCita() {
     Especialidad esp = seleccionarEspecialista();
-    
     Fecha fechaCita = seleccionarFecha(esp);
-    if(!fechaCita.esFechaValida()) {
-        system("cls||clear");
-        cout << "Operacion cancelada. Volviendo al menu principal..." << endl;
-        cout << "Presione cualquier tecla para continuar..." << endl;
-        getch();
+    if (!fechaCita.esFechaValida()) {
+        // Si se presionó ESC en seleccionarFecha, volver al menú principal
         return;
     }
-    
     Hora horaCita = seleccionarHora(fechaCita, esp);
-    if(!horaCita.esHoraValida()) {
-        system("cls||clear");
-        cout << "Operacion cancelada. Volviendo al menu principal..." << endl;
-        cout << "Presione cualquier tecla para continuar..." << endl;
-        getch();
+    if (!horaCita.esHoraValida()) {
+        // Si se presionó ESC en seleccionarHora, volver al menú principal
         return;
     }
-    
+    // Si se seleccionó fecha y hora válidas, continuar con el flujo normal
     system("cls||clear");
     cout << "=== INGRESE DATOS DEL PACIENTE ===" << endl;
-    
     string nombre, cedula;
     cout << "\nNombre del paciente: ";
     getline(cin, nombre);
-    
     cout << "Cedula: ";
     getline(cin, cedula);
-    
-    if(existeCitaConCedula(cedula)) {
+    if (existeCitaConCedula(cedula)) {
         cout << "Error: Ya existe una cita para esta cedula." << endl;
         cout << "Presione cualquier tecla para continuar..." << endl;
         getch();
         return;
     }
-    
     Fecha fechaNacimiento;
     bool fechaValida = false;
     do {
@@ -331,13 +407,11 @@ void GestorCitas::agendarCita() {
             continue;
         }
         cin.ignore();
-        // Validar rangos de día y mes antes de crear la fecha
         if (m < 1 || m > 12) {
             cout << "Mes no valido. Debe estar entre 1 y 12.\n";
             cout << "Presione cualquier tecla para continuar..." << endl;
             getch();
             continue;
-        
         }
         int maxDias = Fecha::diasEnMesStatic(m, a);
         if (d < 1 || d > maxDias) {
@@ -348,22 +422,18 @@ void GestorCitas::agendarCita() {
         }
         fechaNacimiento = Fecha(d, m, a);
         fechaValida = validarFechaNacimiento(fechaNacimiento);
-        if(!fechaValida) {
+        if (!fechaValida) {
             cout << "Fecha no valida. Debe ser una fecha pasada (maximo 100 anos atras).\n";
             cout << "Presione cualquier tecla para continuar..." << endl;
             getch();
         }
-    } while(!fechaValida);
+    } while (!fechaValida);
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    
     string motivo;
     cout << "Motivo de la cita: ";
     getline(cin, motivo);
-    
-    Cita nuevaCita(Paciente(nombre, cedula, fechaNacimiento), 
-            fechaCita, horaCita, esp, motivo);
+    Cita nuevaCita(Paciente(nombre, cedula, fechaNacimiento), fechaCita, horaCita, esp, motivo);
     citas.insertar(nuevaCita);
-    
     system("cls||clear");
     cout << "\nCita agendada exitosamente!\n";
     cout << "Presione cualquier tecla para continuar..." << endl;

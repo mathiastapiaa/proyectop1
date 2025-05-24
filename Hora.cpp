@@ -4,7 +4,9 @@
 using namespace std;
 
 Hora::Hora(int h, int m, int s) : hora(h), minuto(m), segundo(s) {
-    validarHora();
+    // Solo validar si los valores son positivos
+    if (h >= 0 && m >= 0 && s >= 0)
+        validarHora();
 }
 
 Hora::Hora(const Hora& otra) : hora(otra.hora), minuto(otra.minuto), segundo(otra.segundo) {}
@@ -38,6 +40,7 @@ bool Hora::operator==(const Hora& otra) const {
 }
 
 bool Hora::esHoraValida() const {
+    if (hora < 0 || minuto < 0 || segundo < 0) return false;
     try {
         validarHora();
         return true;

@@ -1,4 +1,5 @@
 #include "GestorCitas.h"
+#include "ValidadorDLL.h"
 #include <iostream>
 #include <memory>
 

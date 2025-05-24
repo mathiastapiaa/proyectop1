@@ -13,18 +13,23 @@ class GestorCitas : public IMenu {
 private:
     ListaDCircular<Cita> citas;
     std::string archivoCitas;
-    
+
+    // Feriados nacionales de Ecuador (día, mes)
+    std::vector<std::pair<int, int>> feriados;
+    void inicializarFeriados();
+    bool esFeriado(const Fecha& fecha) const;
+
     // Menús
     void mostrarMenuPrincipal() const;
     void mostrarMenuEspecialistas() const;
-    
+
     // Nuevas funciones de selección interactiva
     Especialidad seleccionarEspecialista();
     Fecha seleccionarFecha(Especialidad esp);
     Hora seleccionarHora(const Fecha& fecha, Especialidad esp);
     void mostrarCalendario(int anio, int mes, int diaSeleccionado = 0) const;
     void mostrarHorarioDisponible(const Fecha& fecha, Especialidad esp, int horaSeleccionada = -1) const;
-    
+
     // Validaciones
     bool esFinDeSemana(const Fecha& fecha) const;
     bool esDiaValido(const Fecha& fecha, Especialidad esp) const;
@@ -32,24 +37,24 @@ private:
     bool validarFechaNacimiento(const Fecha& fecha) const;
     bool validarFechaCita(const Fecha& fecha) const;
     bool existeCitaConCedula(const std::string& cedula) const;
-    
+
     // Funciones principales
     void agendarCita();
     void mostrarCitas() const;
     void borrarCita();
     void buscarPorCedula() const;
-    
+
 public:
     GestorCitas(const std::string& archivo = "data/citas.dat");
     ~GestorCitas();
-    
+
     void mostrar() const override;
     void ejecutar() override;
     void agregarOpcion(const std::string& opcion) override;
-    
+
     void guardarCitas() const;
     void cargarCitas();
-    
+
     const ListaDCircular<Cita>& getCitas() const { return citas; }
 };
 

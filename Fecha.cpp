@@ -3,7 +3,9 @@
 #include <ctime>
 
 Fecha::Fecha(int d, int m, int a) : dia(d), mes(m), anio(a) {
-    validarFecha();
+    // Solo validar si los valores son positivos
+    if (d > 0 && m > 0 && a > 0)
+        validarFecha();
 }
 
 Fecha::Fecha(const Fecha& otra) : dia(otra.dia), mes(otra.mes), anio(otra.anio) {}
@@ -68,6 +70,7 @@ int Fecha::calcularEdad() const {
 }
 
 bool Fecha::esFechaValida() const {
+    if (dia < 1 || mes < 1 || anio < 1) return false;
     try {
         validarFecha();
         return true;
