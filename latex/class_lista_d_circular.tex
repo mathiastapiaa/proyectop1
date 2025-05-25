@@ -1,0 +1,226 @@
+\doxysection{Lista\+DCircular\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_lista_d_circular}{}\label{class_lista_d_circular}\index{ListaDCircular$<$ T $>$@{ListaDCircular$<$ T $>$}}
+
+
+Lista doblemente circular generica.  
+
+
+
+
+{\ttfamily \#include $<$Lista\+DCircular.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_lista_d_circular_ac4af57dcf7f8324842f6a3c67461836b}{insertar}} (const T \&dato)
+\begin{DoxyCompactList}\small\item\em Inserta un elemento en la lista. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_lista_d_circular_a99969b8b63d6cc492d0b0a7d06c4f559}{eliminar}} (const T \&dato)
+\begin{DoxyCompactList}\small\item\em Elimina un elemento de la lista. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_lista_d_circular_a87eb43e8ce0bfd94503cd1e31f56677c}{eliminar\+Nodo}} (Nodo \texorpdfstring{$\ast$}{*}nodo\+AEliminar)
+\begin{DoxyCompactList}\small\item\em Elimina un nodo especifico de la lista. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_lista_d_circular_aae8864716edf567765d6e9318c034cb6}{buscar}} (const T \&dato) const
+\begin{DoxyCompactList}\small\item\em Busca un elemento en la lista. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lista_d_circular_acb698131ccdb037a070842ee50a42c2f}{for\+Each}} (std\+::function$<$ void(const T \&)$>$ func) const
+\begin{DoxyCompactList}\small\item\em Aplica una funcion a cada elemento de la lista. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lista_d_circular_ab6ebcf5f0359fd2f3e931f16cc5d8dfa}{for\+Each\+Recursivo}} (std\+::function$<$ void(const T \&)$>$ func) const
+\begin{DoxyCompactList}\small\item\em Aplica una funcion a cada elemento de la lista de forma recursiva. \end{DoxyCompactList}\item 
+\Hypertarget{class_lista_d_circular_ad5642c67791d0d5256f8f86cf1c25f6c}\label{class_lista_d_circular_ad5642c67791d0d5256f8f86cf1c25f6c} 
+void {\bfseries limpiar} ()
+\begin{DoxyCompactList}\small\item\em Elimina todos los elementos de la lista. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_lista_d_circular_a2b47c2aca2b87b049f6b3786dc784da4}{get\+Tamanio}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene el tamanio de la lista. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_lista_d_circular_a4261d50889eaeb304086d3ae7148934d}{esta\+Vacia}} () const
+\begin{DoxyCompactList}\small\item\em Indica si la lista esta vacia. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U = T$>$ }\\std\+::enable\+\_\+if$<$ std\+::is\+\_\+member\+\_\+function\+\_\+pointer$<$ decltype(\&U\+::serializar)$>$\+::value $>$\+::type \mbox{\hyperlink{class_lista_d_circular_a68861aab87028cd7b307a5dd6bde7c65}{guardar\+En\+Archivo}} (const std\+::string \&nombre\+Archivo) const
+\begin{DoxyCompactList}\small\item\em Guarda la lista en un archivo binario. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U = T$>$ }\\std\+::enable\+\_\+if$<$ std\+::is\+\_\+member\+\_\+function\+\_\+pointer$<$ decltype(\&U\+::deserializar)$>$\+::value $>$\+::type \mbox{\hyperlink{class_lista_d_circular_a6395710671649135aa77fcc55aa2807a}{cargar\+Desde\+Archivo}} (const std\+::string \&nombre\+Archivo)
+\begin{DoxyCompactList}\small\item\em Carga la lista desde un archivo binario. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Lista\+DCircular$<$ T $>$}
+Lista doblemente circular generica. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Tipo de dato almacenado. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_lista_d_circular_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_lista_d_circular_aae8864716edf567765d6e9318c034cb6}\index{ListaDCircular$<$ T $>$@{ListaDCircular$<$ T $>$}!buscar@{buscar}}
+\index{buscar@{buscar}!ListaDCircular$<$ T $>$@{ListaDCircular$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{buscar()}{buscar()}}
+{\footnotesize\ttfamily \label{class_lista_d_circular_aae8864716edf567765d6e9318c034cb6} 
+template$<$typename T$>$ \\
+bool \mbox{\hyperlink{class_lista_d_circular}{Lista\+DCircular}}$<$ T $>$\+::buscar (\begin{DoxyParamCaption}\item[{const T \&}]{dato}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Busca un elemento en la lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dato} & Elemento a buscar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si se encontro. 
+\end{DoxyReturn}
+\Hypertarget{class_lista_d_circular_a6395710671649135aa77fcc55aa2807a}\index{ListaDCircular$<$ T $>$@{ListaDCircular$<$ T $>$}!cargarDesdeArchivo@{cargarDesdeArchivo}}
+\index{cargarDesdeArchivo@{cargarDesdeArchivo}!ListaDCircular$<$ T $>$@{ListaDCircular$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{cargarDesdeArchivo()}{cargarDesdeArchivo()}}
+{\footnotesize\ttfamily \label{class_lista_d_circular_a6395710671649135aa77fcc55aa2807a} 
+template$<$typename T$>$ \\
+template$<$typename U = T$>$ \\
+std\+::enable\+\_\+if$<$ std\+::is\+\_\+member\+\_\+function\+\_\+pointer$<$ decltype(\&U\+::deserializar)$>$\+::value $>$\+::type \mbox{\hyperlink{class_lista_d_circular}{Lista\+DCircular}}$<$ T $>$\+::cargar\+Desde\+Archivo (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{nombre\+Archivo}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Carga la lista desde un archivo binario. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nombre\+Archivo} & Nombre del archivo. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_lista_d_circular_a99969b8b63d6cc492d0b0a7d06c4f559}\index{ListaDCircular$<$ T $>$@{ListaDCircular$<$ T $>$}!eliminar@{eliminar}}
+\index{eliminar@{eliminar}!ListaDCircular$<$ T $>$@{ListaDCircular$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{eliminar()}{eliminar()}}
+{\footnotesize\ttfamily \label{class_lista_d_circular_a99969b8b63d6cc492d0b0a7d06c4f559} 
+template$<$typename T$>$ \\
+bool \mbox{\hyperlink{class_lista_d_circular}{Lista\+DCircular}}$<$ T $>$\+::eliminar (\begin{DoxyParamCaption}\item[{const T \&}]{dato}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Elimina un elemento de la lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dato} & Elemento a eliminar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si se elimino. 
+\end{DoxyReturn}
+\Hypertarget{class_lista_d_circular_a87eb43e8ce0bfd94503cd1e31f56677c}\index{ListaDCircular$<$ T $>$@{ListaDCircular$<$ T $>$}!eliminarNodo@{eliminarNodo}}
+\index{eliminarNodo@{eliminarNodo}!ListaDCircular$<$ T $>$@{ListaDCircular$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{eliminarNodo()}{eliminarNodo()}}
+{\footnotesize\ttfamily \label{class_lista_d_circular_a87eb43e8ce0bfd94503cd1e31f56677c} 
+template$<$typename T$>$ \\
+bool \mbox{\hyperlink{class_lista_d_circular}{Lista\+DCircular}}$<$ T $>$\+::eliminar\+Nodo (\begin{DoxyParamCaption}\item[{Nodo \texorpdfstring{$\ast$}{*}}]{nodo\+AEliminar}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Elimina un nodo especifico de la lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nodo\+AEliminar} & Nodo a eliminar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si se elimino. 
+\end{DoxyReturn}
+\Hypertarget{class_lista_d_circular_a4261d50889eaeb304086d3ae7148934d}\index{ListaDCircular$<$ T $>$@{ListaDCircular$<$ T $>$}!estaVacia@{estaVacia}}
+\index{estaVacia@{estaVacia}!ListaDCircular$<$ T $>$@{ListaDCircular$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{estaVacia()}{estaVacia()}}
+{\footnotesize\ttfamily \label{class_lista_d_circular_a4261d50889eaeb304086d3ae7148934d} 
+template$<$typename T$>$ \\
+bool \mbox{\hyperlink{class_lista_d_circular}{Lista\+DCircular}}$<$ T $>$\+::esta\+Vacia (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Indica si la lista esta vacia. 
+
+\begin{DoxyReturn}{Returns}
+true si esta vacia. 
+\end{DoxyReturn}
+\Hypertarget{class_lista_d_circular_acb698131ccdb037a070842ee50a42c2f}\index{ListaDCircular$<$ T $>$@{ListaDCircular$<$ T $>$}!forEach@{forEach}}
+\index{forEach@{forEach}!ListaDCircular$<$ T $>$@{ListaDCircular$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{forEach()}{forEach()}}
+{\footnotesize\ttfamily \label{class_lista_d_circular_acb698131ccdb037a070842ee50a42c2f} 
+template$<$typename T$>$ \\
+void \mbox{\hyperlink{class_lista_d_circular}{Lista\+DCircular}}$<$ T $>$\+::for\+Each (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(const T \&)$>$}]{func}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Aplica una funcion a cada elemento de la lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em func} & Funcion a aplicar. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_lista_d_circular_ab6ebcf5f0359fd2f3e931f16cc5d8dfa}\index{ListaDCircular$<$ T $>$@{ListaDCircular$<$ T $>$}!forEachRecursivo@{forEachRecursivo}}
+\index{forEachRecursivo@{forEachRecursivo}!ListaDCircular$<$ T $>$@{ListaDCircular$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{forEachRecursivo()}{forEachRecursivo()}}
+{\footnotesize\ttfamily \label{class_lista_d_circular_ab6ebcf5f0359fd2f3e931f16cc5d8dfa} 
+template$<$typename T$>$ \\
+void \mbox{\hyperlink{class_lista_d_circular}{Lista\+DCircular}}$<$ T $>$\+::for\+Each\+Recursivo (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(const T \&)$>$}]{func}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Aplica una funcion a cada elemento de la lista de forma recursiva. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em func} & Funcion a aplicar. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_lista_d_circular_a2b47c2aca2b87b049f6b3786dc784da4}\index{ListaDCircular$<$ T $>$@{ListaDCircular$<$ T $>$}!getTamanio@{getTamanio}}
+\index{getTamanio@{getTamanio}!ListaDCircular$<$ T $>$@{ListaDCircular$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getTamanio()}{getTamanio()}}
+{\footnotesize\ttfamily \label{class_lista_d_circular_a2b47c2aca2b87b049f6b3786dc784da4} 
+template$<$typename T$>$ \\
+size\+\_\+t \mbox{\hyperlink{class_lista_d_circular}{Lista\+DCircular}}$<$ T $>$\+::get\+Tamanio (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtiene el tamanio de la lista. 
+
+\begin{DoxyReturn}{Returns}
+Tamanio. 
+\end{DoxyReturn}
+\Hypertarget{class_lista_d_circular_a68861aab87028cd7b307a5dd6bde7c65}\index{ListaDCircular$<$ T $>$@{ListaDCircular$<$ T $>$}!guardarEnArchivo@{guardarEnArchivo}}
+\index{guardarEnArchivo@{guardarEnArchivo}!ListaDCircular$<$ T $>$@{ListaDCircular$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{guardarEnArchivo()}{guardarEnArchivo()}}
+{\footnotesize\ttfamily \label{class_lista_d_circular_a68861aab87028cd7b307a5dd6bde7c65} 
+template$<$typename T$>$ \\
+template$<$typename U = T$>$ \\
+std\+::enable\+\_\+if$<$ std\+::is\+\_\+member\+\_\+function\+\_\+pointer$<$ decltype(\&U\+::serializar)$>$\+::value $>$\+::type \mbox{\hyperlink{class_lista_d_circular}{Lista\+DCircular}}$<$ T $>$\+::guardar\+En\+Archivo (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{nombre\+Archivo}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Guarda la lista en un archivo binario. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nombre\+Archivo} & Nombre del archivo. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_lista_d_circular_ac4af57dcf7f8324842f6a3c67461836b}\index{ListaDCircular$<$ T $>$@{ListaDCircular$<$ T $>$}!insertar@{insertar}}
+\index{insertar@{insertar}!ListaDCircular$<$ T $>$@{ListaDCircular$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{insertar()}{insertar()}}
+{\footnotesize\ttfamily \label{class_lista_d_circular_ac4af57dcf7f8324842f6a3c67461836b} 
+template$<$typename T$>$ \\
+void \mbox{\hyperlink{class_lista_d_circular}{Lista\+DCircular}}$<$ T $>$\+::insertar (\begin{DoxyParamCaption}\item[{const T \&}]{dato}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inserta un elemento en la lista. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dato} & Elemento a insertar. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_lista_d_circular_8h}{Lista\+DCircular.\+h}}\end{DoxyCompactItemize}

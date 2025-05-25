@@ -1,0 +1,78 @@
+\doxysection{Gestor\+Citas.\+h}
+\hypertarget{_gestor_citas_8h_source}{}\label{_gestor_citas_8h_source}\mbox{\hyperlink{_gestor_citas_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ GestorCitas.h}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ GESTOR\_CITAS\_H}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ GESTOR\_CITAS\_H}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_lista_d_circular_8h}{ListaDCircular.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_cita_8h}{Cita.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}IMenu.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <conio.h>}\ \textcolor{comment}{//\ Para\ getch()}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_gestor_citas_add28bec6e6797d8f86b2dccdd081eeb2}{GestorCitas}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_menu}{IMenu}}\ \{}
+\DoxyCodeLine{00022\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_lista_d_circular}{ListaDCircular<Cita>}}\ citas;}
+\DoxyCodeLine{00024\ \ \ \ \ std::string\ archivoCitas;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ Feriados\ nacionales\ de\ Ecuador\ (día,\ mes)}}
+\DoxyCodeLine{00027\ \ \ \ \ std::vector<std::pair<int,\ int>>\ feriados;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ inicializarFeriados();}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{bool}\ esFeriado(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_fecha}{Fecha}}\&\ fecha)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ Menús}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ mostrarMenuPrincipal()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ mostrarMenuEspecialistas()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ Nuevas\ funciones\ de\ selección\ interactiva}}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{_cita_8h_ab5e299b5cee549e70ee789c3b56c1c88}{Especialidad}}\ seleccionarEspecialista();}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_fecha}{Fecha}}\ seleccionarFecha(\mbox{\hyperlink{_cita_8h_ab5e299b5cee549e70ee789c3b56c1c88}{Especialidad}}\ esp);}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{class_hora}{Hora}}\ seleccionarHora(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_fecha}{Fecha}}\&\ fecha,\ \mbox{\hyperlink{_cita_8h_ab5e299b5cee549e70ee789c3b56c1c88}{Especialidad}}\ esp);}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ mostrarCalendario(\textcolor{keywordtype}{int}\ anio,\ \textcolor{keywordtype}{int}\ mes,\ \textcolor{keywordtype}{int}\ diaSeleccionado\ =\ 0)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ mostrarHorarioDisponible(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_fecha}{Fecha}}\&\ fecha,\ \mbox{\hyperlink{_cita_8h_ab5e299b5cee549e70ee789c3b56c1c88}{Especialidad}}\ esp,\ \textcolor{keywordtype}{int}\ horaSeleccionada\ =\ -\/1)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ Validaciones}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{bool}\ esFinDeSemana(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_fecha}{Fecha}}\&\ fecha)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{bool}\ esDiaValido(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_fecha}{Fecha}}\&\ fecha,\ \mbox{\hyperlink{_cita_8h_ab5e299b5cee549e70ee789c3b56c1c88}{Especialidad}}\ esp)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{bool}\ validarDisponibilidad(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_fecha}{Fecha}}\&\ fecha,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_hora}{Hora}}\&\ hora,\ \mbox{\hyperlink{_cita_8h_ab5e299b5cee549e70ee789c3b56c1c88}{Especialidad}}\ esp)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{bool}\ validarFechaNacimiento(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_fecha}{Fecha}}\&\ fecha)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{bool}\ validarFechaCita(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_fecha}{Fecha}}\&\ fecha)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ existeCitaConCedula(\textcolor{keyword}{const}\ std::string\&\ cedula)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//\ Funciones\ principales}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ agendarCita();}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ mostrarCitas()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ borrarCita();}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ buscarPorCedula()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{class_gestor_citas_add28bec6e6797d8f86b2dccdd081eeb2}{GestorCitas}}(\textcolor{keyword}{const}\ std::string\&\ archivo\ =\ \textcolor{stringliteral}{"{}data/citas.dat"{}});}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{class_gestor_citas_a96a584429f3b87b9804d6704415b0bef}{\string~GestorCitas}}();}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_gestor_citas_a94ccb163bcbe27b371a9d92469fa4b78}{mostrar}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_gestor_citas_a0e37d99de6d6ff539673b88ab1f91a23}{ejecutar}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_gestor_citas_aa11e6b09f918c5e43de3590d9969ad7a}{agregarOpcion}}(\textcolor{keyword}{const}\ std::string\&\ opcion)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_gestor_citas_ad2d7549482f14b5fe994146f15b0cd41}{guardarCitas}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_gestor_citas_abd77b198eb58d843a84f7451dd63e4eb}{cargarCitas}}();}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_gestor_citas_a41351f8628d8e9b0fedc479ec7675a42}{realizarBackup}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_gestor_citas_a93b6fa0a87e75fad62c625eec7c94ede}{restaurarDesdeBackup}}();}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_gestor_citas_a48bbf08d606a1c20dea3c5776401b45c}{mostrarAyuda}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_lista_d_circular}{ListaDCircular<Cita>}}\&\ \mbox{\hyperlink{class_gestor_citas_ae59a8f91eb9a29f32dd8f9fabd673c6a}{getCitas}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ citas;\ \}}
+\DoxyCodeLine{00114\ \};}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

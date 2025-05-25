@@ -1,10 +1,16 @@
-#include "GestorCitas.h"
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+#include <windows.h>
+#undef byte
+
 #include <iostream>
 #include <iomanip>
 #include <limits>
 #include <ctime>
 #include <conio.h>
 #include <algorithm>
+#include "GestorCitas.h"
 
 using namespace std;
 
@@ -97,7 +103,10 @@ void GestorCitas::mostrarMenuPrincipal() const {
     cout << "2. Mostrar citas" << endl;
     cout << "3. Borrar cita" << endl;
     cout << "4. Buscar por cedula" << endl;
-    cout << "5. Salir" << endl;
+    cout << "5. Realizar backup" << endl;
+    cout << "6. Restaurar desde backup" << endl;
+    cout << "7. Salir" << endl;
+    cout << "8. Ayuda" << endl;
 }
 
 void GestorCitas::mostrarMenuEspecialistas() const {
@@ -106,7 +115,7 @@ void GestorCitas::mostrarMenuEspecialistas() const {
     cout << "2. Pediatria" << endl;
     cout << "3. Dermatologia" << endl;
     cout << "4. Ginecologia" << endl;
-    cout << "5. Traumatologia" << endl;
+    cout << "5. Medico General" << endl;
 }
 
 void GestorCitas::mostrar() const {
@@ -134,10 +143,35 @@ void GestorCitas::ejecutar() {
             case 2: mostrarCitas(); break;
             case 3: borrarCita(); break;
             case 4: buscarPorCedula(); break;
-            case 5: cout << "Saliendo del sistema..." << endl; break;
+            case 5: realizarBackup(); break;
+            case 6: restaurarDesdeBackup(); break;
+            case 7: cout << "Saliendo del sistema..." << endl; break;
+            case 8: mostrarAyuda(); break;
             default: cout << "Opcion no valida. Intente nuevamente." << endl;
         }
-    } while (opcion != 5);
+    } while (opcion != 7);
+}
+// Opcion de ayuda
+void GestorCitas::mostrarAyuda() const {
+    system("cls||clear");
+    cout << "=== AYUDA DEL SISTEMA DE CITAS MEDICAS ===\n";
+    cout << "\nEste sistema permite gestionar citas medicas de manera sencilla y segura.\n";
+    cout << "\nFUNCIONALIDADES PRINCIPALES:\n";
+    cout << "1. Agendar cita: Permite registrar una nueva cita medica para un paciente.\n";
+    cout << "2. Mostrar citas: Muestra todas las citas programadas.\n";
+    cout << "3. Borrar cita: Permite cancelar una cita existente ingresando los datos correspondientes.\n";
+    cout << "4. Buscar por cedula: Busca y muestra las citas asociadas a una cedula de paciente.\n";
+    cout << "5. Realizar backup: Crea una copia de seguridad de todas las citas en 'data/citas_backup.dat'.\n";
+    cout << "6. Restaurar desde backup: Recupera todas las citas desde el archivo de backup si se pierde o dana el archivo principal.\n";
+    cout << "7. Salir: Cierra el sistema de citas medicas.\n";
+    cout << "8. Ayuda: Muestra esta pantalla de ayuda.\n";
+    cout << "\nDETALLES IMPORTANTES:\n";
+    cout << "- El sistema valida que las citas no se agenden en fines de semana ni feriados nacionales.\n";
+    cout << "- Solo se permiten fechas validas y futuras para agendar citas.\n";
+    cout << "- El backup protege tus datos ante perdidas o errores.\n";
+    cout << "- Puedes restaurar tus citas desde el backup si borras o pierdes el archivo principal.\n";
+    cout << "\nPara regresar al menu principal, presione Enter..." << endl;
+    cin.get();
 }
 
 Especialidad GestorCitas::seleccionarEspecialista() {
@@ -147,17 +181,21 @@ Especialidad GestorCitas::seleccionarEspecialista() {
         mostrarMenuEspecialistas();
         cout << "Opcion: ";
         cin >> opcion;
-        cin.ignore();
-
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Entrada no valida. Por favor ingrese un numero del 1 al 5." << endl;
+            continue;
+        }
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         switch(opcion) {
             case 1: return Especialidad::CARDIOLOGIA;
             case 2: return Especialidad::PEDIATRIA;
             case 3: return Especialidad::DERMATOLOGIA;
             case 4: return Especialidad::GINECOLOGIA;
-            case 5: return Especialidad::TRAUMATOLOGIA;
-            default: 
+            case 5: return Especialidad::MEDICO_GENERAL;
+            default:
                 cout << "Opcion no valida. Intente nuevamente." << endl;
-                cin.ignore();
         }
     } while(true);
 }
@@ -170,15 +208,15 @@ bool GestorCitas::esFinDeSemana(const Fecha& fecha) const {
 
 bool GestorCitas::esDiaValido(const Fecha& fecha, Especialidad esp) const {
     if (esFinDeSemana(fecha)) {
-        cout << "No se agenda citas los fines de semana." << endl;
+    cout << "No se agenda citas los fines de semana." << endl;
         return false;
     }
     if (esFeriado(fecha)) {
-        cout << "No se agenda citas en días feriados nacionales." << endl;
+    cout << "No se agenda citas en dias feriados nacionales." << endl;
         return false;
     }
     if (!validarFechaCita(fecha)) {
-        cout << "Fecha no valida." << endl;
+    cout << "Fecha no valida." << endl;
         return false;
     }
     return true;
@@ -384,56 +422,73 @@ void GestorCitas::agendarCita() {
     // Si se seleccionó fecha y hora válidas, continuar con el flujo normal
     system("cls||clear");
     cout << "=== INGRESE DATOS DEL PACIENTE ===" << endl;
-    string nombre, cedula;
-    cout << "\nNombre del paciente: ";
-    getline(cin, nombre);
-    cout << "Cedula: ";
-    getline(cin, cedula);
-    if (existeCitaConCedula(cedula)) {
-        cout << "Error: Ya existe una cita para esta cedula." << endl;
+
+    // --- INTEGRACIÓN DEL DLL PARA INGRESO DE DATOS ---
+    HINSTANCE hDll = LoadLibrary(TEXT("IngresoDatosDLL.dll"));
+    if (!hDll) {
+        cout << "No se pudo cargar el DLL de ingreso de datos." << endl;
         cout << "Presione cualquier tecla para continuar..." << endl;
         getch();
         return;
     }
+    typedef void (__stdcall *IngresarDatoFunc)(const char*, char*, int);
+    IngresarDatoFunc ingresarDato = (IngresarDatoFunc)GetProcAddress(hDll, "ingresarDato");
+    if (!ingresarDato) {
+        cout << "No se encontro la funcion ingresarDato en el DLL." << endl;
+        FreeLibrary(hDll);
+        cout << "Presione cualquier tecla para continuar..." << endl;
+        getch();
+        return;
+    }
+
+    char nombre[100], cedula[20], motivo[200], fechaNacStr[20];
+    ingresarDato("\nNombre del paciente: ", nombre, 100);
+    ingresarDato("Cedula: ", cedula, 20);
+    if (existeCitaConCedula(cedula)) {
+        cout << "Error: Ya existe una cita para esta cedula." << endl;
+        cout << "Presione cualquier tecla para continuar..." << endl;
+        getch();
+        FreeLibrary(hDll);
+        return;
+    }
+
     Fecha fechaNacimiento;
     bool fechaValida = false;
     do {
-        int d, m, a;
-        cout << "Fecha de nacimiento (DD MM AAAA): ";
-        if (!(cin >> d >> m >> a)) {
-            cout << "Entrada no valida. Intente de nuevo.\n";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        ingresarDato("Fecha de nacimiento (DD/MM/AAAA): ", fechaNacStr, 20);
+        int d = 0, m = 0, a = 0;
+        char sep1 = '/', sep2 = '/';
+        std::istringstream iss(fechaNacStr);
+        iss >> d >> sep1 >> m >> sep2 >> a;
+        if (iss.fail() || sep1 != '/' || sep2 != '/' || d < 1 || m < 1 || a < 1900) {
+        cout << "Entrada no valida. Intente de nuevo.\n";
             continue;
         }
-        cin.ignore();
         if (m < 1 || m > 12) {
-            cout << "Mes no valido. Debe estar entre 1 y 12.\n";
-            cout << "Presione cualquier tecla para continuar..." << endl;
-            getch();
+        cout << "Mes no valido. Debe estar entre 1 y 12.\n";
             continue;
         }
         int maxDias = Fecha::diasEnMesStatic(m, a);
         if (d < 1 || d > maxDias) {
-            cout << "Dia no valido para el mes seleccionado.\n";
-            cout << "Presione cualquier tecla para continuar..." << endl;
-            getch();
+        cout << "Dia no valido para el mes seleccionado.\n";
             continue;
         }
-        fechaNacimiento = Fecha(d, m, a);
+        try {
+            fechaNacimiento = Fecha(d, m, a);
+        } catch (const std::exception& e) {
+            cout << "Fecha no valida: " << e.what() << endl;
+            continue;
+        }
         fechaValida = validarFechaNacimiento(fechaNacimiento);
         if (!fechaValida) {
-            cout << "Fecha no valida. Debe ser una fecha pasada (maximo 100 anos atras).\n";
-            cout << "Presione cualquier tecla para continuar..." << endl;
-            getch();
+        cout << "Fecha no valida. Debe ser una fecha pasada (maximo 100 anos atras).\n";
         }
     } while (!fechaValida);
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    string motivo;
-    cout << "Motivo de la cita: ";
-    getline(cin, motivo);
+    ingresarDato("Motivo de la cita: ", motivo, 200);
+
     Cita nuevaCita(Paciente(nombre, cedula, fechaNacimiento), fechaCita, horaCita, esp, motivo);
     citas.insertar(nuevaCita);
+    FreeLibrary(hDll);
     system("cls||clear");
     cout << "\nCita agendada exitosamente!\n";
     cout << "Presione cualquier tecla para continuar..." << endl;
@@ -486,14 +541,14 @@ bool GestorCitas::validarDisponibilidad(const Fecha& fecha, const Hora& hora, Es
 void GestorCitas::mostrarCitas() const {
     cout << "\n=== CITAS PROGRAMADAS ===" << endl;
     if (citas.estaVacia()) {
-        cout << "No hay citas programadas." << endl;
+    cout << "No hay citas programadas." << endl;
         return;
     }
     
     
     citas.forEachRecursivo([](const Cita& cita) {
         cita.mostrarCita();
-        cout << "-------------------------" << endl;
+    cout << "-------------------------" << endl;
     });
 }
 
@@ -513,14 +568,14 @@ void GestorCitas::buscarPorCedula() const {
     });
 
     if (!encontrada) {
-        cout << "No se encontraron citas para esta cedula." << endl;
+    cout << "No se encontraron citas para esta cedula." << endl;
     }
 }
 
 void GestorCitas::borrarCita() {
     mostrarCitas();
     if (citas.estaVacia()) {
-        cout << "No hay citas para cancelar." << endl;
+    cout << "No hay citas para cancelar." << endl;
         return;
     }
 
@@ -566,27 +621,52 @@ void GestorCitas::borrarCita() {
 }
 
 void GestorCitas::guardarCitas() const {
-    ofstream archivo(archivoCitas, ios::binary);
-    if (!archivo) {
-        cerr << "Error al abrir el archivo para escritura." << endl;
-        return;
+    try {
+        citas.guardarEnArchivo(archivoCitas);
+    } catch (const std::exception& e) {
+        cerr << "Error al guardar citas: " << e.what() << endl;
     }
-    
-    citas.forEach([&archivo](const Cita& cita) {
-        archivo.write(reinterpret_cast<const char*>(&cita), sizeof(Cita));
-    });
 }
 
 void GestorCitas::cargarCitas() {
-    ifstream archivo(archivoCitas, ios::binary);
-    if (!archivo) return;
-    
-    Cita cita;
-    while (archivo.read(reinterpret_cast<char*>(&cita), sizeof(Cita))) {
-        citas.insertar(cita);
-    }
+    citas.cargarDesdeArchivo(archivoCitas);
+    cout << "Cargadas " << citas.getTamanio() << " citas desde el archivo." << endl;
 }
 
 void GestorCitas::agregarOpcion(const string& opcion) {
     // Implementacion si se necesita extender
+}
+
+void GestorCitas::realizarBackup() const {
+    std::ifstream archivoOriginal(archivoCitas, std::ios::binary);
+    if (!archivoOriginal) {
+        std::cerr << "No se pudo abrir el archivo original para el backup." << std::endl;
+        return;
+    }
+
+    std::ofstream archivoBackup("data/citas_backup.dat", std::ios::binary);
+    if (!archivoBackup) {
+        std::cerr << "No se pudo crear el archivo de backup." << std::endl;
+        return;
+    }
+
+    archivoBackup << archivoOriginal.rdbuf();
+    std::cout << "Backup realizado exitosamente." << std::endl;
+}
+
+void GestorCitas::restaurarDesdeBackup() {
+    std::ifstream archivoBackup("data/citas_backup.dat", std::ios::binary);
+    if (!archivoBackup) {
+        std::cerr << "No se encontro un archivo de backup para restaurar." << std::endl;
+        return;
+    }
+
+    std::ofstream archivoOriginal(archivoCitas, std::ios::binary);
+    if (!archivoOriginal) {
+        std::cerr << "No se pudo abrir el archivo original para la restauracion." << std::endl;
+        return;
+    }
+
+    archivoOriginal << archivoBackup.rdbuf();
+    std::cout << "Restauracion desde backup realizada exitosamente." << std::endl;
 }

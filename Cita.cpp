@@ -1,3 +1,7 @@
+/**
+ * @file Cita.cpp
+ * @brief Implementacion de la clase Cita.
+ */
 #include "Cita.h"
 #include <iostream>
 
@@ -5,6 +9,32 @@ using namespace std;
 
 Cita::Cita(const Paciente& pac, const Fecha& fec, const Hora& hor, Especialidad esp, const string& mot)
     : paciente(pac), fecha(fec), hora(hor), especialidad(esp), motivo(mot) {}
+
+void Cita::serializar(std::ostream& os) const {
+    paciente.serializar(os);
+    fecha.serializar(os);
+    hora.serializar(os);
+    int esp = static_cast<int>(especialidad);
+    os.write(reinterpret_cast<const char*>(&esp), sizeof(esp));
+    size_t len = motivo.size();
+    os.write(reinterpret_cast<const char*>(&len), sizeof(len));
+    os.write(motivo.c_str(), len);
+}
+
+void Cita::deserializar(std::istream& is) {
+    paciente.deserializar(is);
+    fecha.deserializar(is);
+    hora.deserializar(is);
+    int esp;
+    is.read(reinterpret_cast<char*>(&esp), sizeof(esp));
+    especialidad = static_cast<Especialidad>(esp);
+    size_t len;
+    is.read(reinterpret_cast<char*>(&len), sizeof(len));
+    char* buffer = new char[len+1];
+    is.read(buffer, len); buffer[len] = '\0';
+    motivo = buffer;
+    delete[] buffer;
+}
 
 Paciente Cita::getPaciente() const { return paciente; }
 Fecha Cita::getFecha() const { return fecha; }
@@ -18,7 +48,7 @@ string Cita::getEspecialidadStr() const {
         case Especialidad::PEDIATRIA: return "Pediatria";
         case Especialidad::DERMATOLOGIA: return "Dermatologia";
         case Especialidad::GINECOLOGIA: return "Ginecologia";
-        case Especialidad::TRAUMATOLOGIA: return "Traumatologia";
+        case Especialidad::MEDICO_GENERAL: return "Medico General";
         default: return "Desconocida";
     }
 }

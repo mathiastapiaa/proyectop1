@@ -1,0 +1,183 @@
+\doxysection{Paciente Class Reference}
+\hypertarget{class_paciente}{}\label{class_paciente}\index{Paciente@{Paciente}}
+
+
+Representa un paciente, hereda de \doxylink{class_persona}{Persona}.  
+
+
+
+
+{\ttfamily \#include $<$Paciente.\+h$>$}
+
+Inheritance diagram for Paciente\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_paciente}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_paciente_af237f045043da3947ae7f328eed8289d}{Paciente}} (const string \&nom="{}"{}, const string \&ced="{}"{}, const \mbox{\hyperlink{class_fecha}{Fecha}} \&fn=\mbox{\hyperlink{class_fecha}{Fecha}}(), const string \&hist="{}"{})
+\begin{DoxyCompactList}\small\item\em Constructor de la clase \doxylink{class_paciente}{Paciente}. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_paciente_a1d02d8ed774e2798583ef1a582ddcd54}{get\+Historial\+Medico}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene el historial medico del paciente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_paciente_a58afef1dd5b515c9146df30c3a400c74}{set\+Historial\+Medico}} (const string \&hist)
+\begin{DoxyCompactList}\small\item\em Establece el historial medico del paciente. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_paciente_af6e007c43147f4c6412b4f243330cfdb}{mostrar\+Informacion}} () const override
+\begin{DoxyCompactList}\small\item\em Muestra la informacion del paciente por consola. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_paciente_a1c995399601653f7918b6285d920df3f}{serializar}} (std\+::ostream \&os) const override
+\begin{DoxyCompactList}\small\item\em Serializa el paciente en un flujo de salida. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_paciente_a22ae612644bb8a896a2e35c922a29c05}{deserializar}} (std\+::istream \&is) override
+\begin{DoxyCompactList}\small\item\em Deserializa el paciente desde un flujo de entrada. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_persona}{Persona}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_persona_a3f7e286c137152f539392e39278d664f}{Persona}} (const string \&nom="{}"{}, const string \&ced="{}"{}, const \mbox{\hyperlink{class_fecha}{Fecha}} \&fn=\mbox{\hyperlink{class_fecha}{Fecha}}())
+\begin{DoxyCompactList}\small\item\em Constructor de la clase \doxylink{class_persona}{Persona}. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Persona} ()=default
+\begin{DoxyCompactList}\small\item\em Destructor virtual. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_persona_a9b69d3ceb2fd8303b3a940bf80bf01cb}{get\+Nombre}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene el nombre de la persona. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_persona_acd215c1b3685860818dfa2bcb247ea2a}{get\+Cedula}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene la cedula de la persona. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_fecha}{Fecha}} \mbox{\hyperlink{class_persona_ad1f7ca7daee0ab843354d0a9b3dcef1d}{get\+Fecha\+Nacimiento}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene la fecha de nacimiento. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_persona_aefe0d245c256789528c1bd95acf8950b}{get\+Edad}} () const
+\begin{DoxyCompactList}\small\item\em Calcula la edad de la persona. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_persona_a830e698682a31607d518556945a6cb09}{set\+Nombre}} (const string \&nom)
+\begin{DoxyCompactList}\small\item\em Establece el nombre de la persona. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_persona_a587b9b8ceec611f84681bdd14fe33698}{set\+Cedula}} (const string \&ced)
+\begin{DoxyCompactList}\small\item\em Establece la cedula de la persona. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_persona_ae108f69625efc44498554d40dbc66036}{set\+Fecha\+Nacimiento}} (const \mbox{\hyperlink{class_fecha}{Fecha}} \&fn)
+\begin{DoxyCompactList}\small\item\em Establece la fecha de nacimiento. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_persona}{Persona}}}
+\begin{DoxyCompactItemize}
+\item 
+string {\bfseries nombre}
+\item 
+string {\bfseries cedula}
+\item 
+\mbox{\hyperlink{class_fecha}{Fecha}} {\bfseries fecha\+Nacimiento}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Representa un paciente, hereda de \doxylink{class_persona}{Persona}. 
+
+\label{doc-constructors}
+\Hypertarget{class_paciente_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_paciente_af237f045043da3947ae7f328eed8289d}\index{Paciente@{Paciente}!Paciente@{Paciente}}
+\index{Paciente@{Paciente}!Paciente@{Paciente}}
+\doxysubsubsection{\texorpdfstring{Paciente()}{Paciente()}}
+{\footnotesize\ttfamily \label{class_paciente_af237f045043da3947ae7f328eed8289d} 
+Paciente\+::\+Paciente (\begin{DoxyParamCaption}\item[{const string \&}]{nom}{ = {\ttfamily "{}"{}}, }\item[{const string \&}]{ced}{ = {\ttfamily "{}"{}}, }\item[{const \mbox{\hyperlink{class_fecha}{Fecha}} \&}]{fn}{ = {\ttfamily \mbox{\hyperlink{class_fecha}{Fecha}}()}, }\item[{const string \&}]{hist}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+
+
+Constructor de la clase \doxylink{class_paciente}{Paciente}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nom} & Nombre del paciente. \\
+\hline
+{\em ced} & Cedula del paciente. \\
+\hline
+{\em fn} & \doxylink{class_fecha}{Fecha} de nacimiento. \\
+\hline
+{\em hist} & Historial medico. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_paciente_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_paciente_a22ae612644bb8a896a2e35c922a29c05}\index{Paciente@{Paciente}!deserializar@{deserializar}}
+\index{deserializar@{deserializar}!Paciente@{Paciente}}
+\doxysubsubsection{\texorpdfstring{deserializar()}{deserializar()}}
+{\footnotesize\ttfamily \label{class_paciente_a22ae612644bb8a896a2e35c922a29c05} 
+void Paciente\+::deserializar (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Deserializa el paciente desde un flujo de entrada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is} & Flujo de entrada. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_persona_a04bec21a7508241fab7e5bf5c225a634}{Persona}}.
+
+\Hypertarget{class_paciente_a1d02d8ed774e2798583ef1a582ddcd54}\index{Paciente@{Paciente}!getHistorialMedico@{getHistorialMedico}}
+\index{getHistorialMedico@{getHistorialMedico}!Paciente@{Paciente}}
+\doxysubsubsection{\texorpdfstring{getHistorialMedico()}{getHistorialMedico()}}
+{\footnotesize\ttfamily \label{class_paciente_a1d02d8ed774e2798583ef1a582ddcd54} 
+string Paciente\+::get\+Historial\+Medico (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Obtiene el historial medico del paciente. 
+
+\begin{DoxyReturn}{Returns}
+Historial medico. 
+\end{DoxyReturn}
+\Hypertarget{class_paciente_af6e007c43147f4c6412b4f243330cfdb}\index{Paciente@{Paciente}!mostrarInformacion@{mostrarInformacion}}
+\index{mostrarInformacion@{mostrarInformacion}!Paciente@{Paciente}}
+\doxysubsubsection{\texorpdfstring{mostrarInformacion()}{mostrarInformacion()}}
+{\footnotesize\ttfamily \label{class_paciente_af6e007c43147f4c6412b4f243330cfdb} 
+void Paciente\+::mostrar\+Informacion (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Muestra la informacion del paciente por consola. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_persona_a7622e7d27927f20d2bf7269ecf1e354d}{Persona}}.
+
+\Hypertarget{class_paciente_a1c995399601653f7918b6285d920df3f}\index{Paciente@{Paciente}!serializar@{serializar}}
+\index{serializar@{serializar}!Paciente@{Paciente}}
+\doxysubsubsection{\texorpdfstring{serializar()}{serializar()}}
+{\footnotesize\ttfamily \label{class_paciente_a1c995399601653f7918b6285d920df3f} 
+void Paciente\+::serializar (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Serializa el paciente en un flujo de salida. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & Flujo de salida. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_persona_a817c73f3687bbaf12dd76f06eaa5ff4d}{Persona}}.
+
+\Hypertarget{class_paciente_a58afef1dd5b515c9146df30c3a400c74}\index{Paciente@{Paciente}!setHistorialMedico@{setHistorialMedico}}
+\index{setHistorialMedico@{setHistorialMedico}!Paciente@{Paciente}}
+\doxysubsubsection{\texorpdfstring{setHistorialMedico()}{setHistorialMedico()}}
+{\footnotesize\ttfamily \label{class_paciente_a58afef1dd5b515c9146df30c3a400c74} 
+void Paciente\+::set\+Historial\+Medico (\begin{DoxyParamCaption}\item[{const string \&}]{hist}{}\end{DoxyParamCaption})}
+
+
+
+Establece el historial medico del paciente. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hist} & Historial medico. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_paciente_8h}{Paciente.\+h}}\item 
+Paciente.\+cpp\end{DoxyCompactItemize}

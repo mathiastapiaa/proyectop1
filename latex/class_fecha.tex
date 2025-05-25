@@ -1,0 +1,427 @@
+\doxysection{Fecha Class Reference}
+\hypertarget{class_fecha}{}\label{class_fecha}\index{Fecha@{Fecha}}
+
+
+Representa una fecha.  
+
+
+
+
+{\ttfamily \#include $<$Fecha.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_fecha_a24780305ccbff2196f785153a2a7a59d}{Fecha}} (int d=0, int m=0, int a=0)
+\begin{DoxyCompactList}\small\item\em Constructor de la clase \doxylink{class_fecha}{Fecha}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_fecha_a67c04a53d4c0cc86cde767498343720e}{Fecha}} (const \mbox{\hyperlink{class_fecha}{Fecha}} \&otra)
+\begin{DoxyCompactList}\small\item\em Constructor de copia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_fecha_af2f540b1826b4cae0d2c08e92528f4e2}{serializar}} (std\+::ostream \&os) const
+\begin{DoxyCompactList}\small\item\em Serializa la fecha en un flujo de salida. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_fecha_ac79e84039167db0d115c643ee2d7e8a3}{deserializar}} (std\+::istream \&is)
+\begin{DoxyCompactList}\small\item\em Deserializa la fecha desde un flujo de entrada. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_fecha_a1a19e31dbeee015e1e178ad981d0968c}{get\+Dia}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene el dia. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_fecha_af0bd07ca520ec7b5bd0003e0164ddb7c}{get\+Mes}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene el mes. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_fecha_a56e3e7e4ced42919103b8b4a7a69554b}{get\+Anio}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene el anio. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_fecha_ae65d70b4f4a3230bd569fd64146fd018}{set\+Dia}} (int d)
+\begin{DoxyCompactList}\small\item\em Establece el dia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_fecha_aff02d2faaa981e2986cda85d45a0b525}{set\+Mes}} (int m)
+\begin{DoxyCompactList}\small\item\em Establece el mes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_fecha_a47ca2f1ef1c7e07efab00927a8864843}{set\+Anio}} (int a)
+\begin{DoxyCompactList}\small\item\em Establece el anio. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_fecha_ad6e3367e389379fd6fbb7449a3b311bd}{operator$<$}} (const \mbox{\hyperlink{class_fecha}{Fecha}} \&otra) const
+\begin{DoxyCompactList}\small\item\em Operador menor que. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_fecha_a68fa6b3c0359408e66f3a42c293ca6e2}{operator$>$}} (const \mbox{\hyperlink{class_fecha}{Fecha}} \&otra) const
+\begin{DoxyCompactList}\small\item\em Operador mayor que. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_fecha_a21919b6e8842a8b8481abe0207ef017b}{operator==}} (const \mbox{\hyperlink{class_fecha}{Fecha}} \&otra) const
+\begin{DoxyCompactList}\small\item\em Operador de igualdad. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_fecha_a381daccd70c6f1ce2c79304a5e3d94ba}{calcular\+Edad}} () const
+\begin{DoxyCompactList}\small\item\em Calcula la edad a partir de la fecha. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_fecha_a286e685460ca0f364c2a2a23afbae859}{es\+Fecha\+Valida}} () const
+\begin{DoxyCompactList}\small\item\em Indica si la fecha es valida. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_fecha_a8d3a212c5fc8846762803479d20a2b47}{es\+Fecha\+Pasada}} () const
+\begin{DoxyCompactList}\small\item\em Indica si la fecha es pasada. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_fecha_af798fcde227eeae0c6f648f96eade5f6}{es\+Fecha\+Futura}} () const
+\begin{DoxyCompactList}\small\item\em Indica si la fecha es futura. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_fecha_a7eb2a9f7b71bd1c5fc30a3bfffa00789}{es\+Mayor\+Que}} (const \mbox{\hyperlink{class_fecha}{Fecha}} \&otra, int anos) const
+\begin{DoxyCompactList}\small\item\em Indica si la fecha es mayor que otra en cierta cantidad de anos. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_fecha_af4ff052c4c23be07de8d5bc70dd8bf78}{get\+Mes\+Str}} () const
+\begin{DoxyCompactList}\small\item\em Devuelve el nombre del mes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_fecha}{Fecha}} \mbox{\hyperlink{class_fecha_a862f1b809dd0c0ce8bba667375e297ec}{fecha\+Actual}} ()
+\begin{DoxyCompactList}\small\item\em Obtiene la fecha actual del sistema. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{class_fecha_aba85ce0ba3fc9df115681ed6102d06d4}{es\+Bisiesto}} (int anio)
+\begin{DoxyCompactList}\small\item\em Indica si un anio es bisiesto. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_fecha_ae543bae3c3e8b774a61b808e07b96b25}{dias\+En\+Mes\+Static}} (int mes, int anio)
+\begin{DoxyCompactList}\small\item\em Devuelve la cantidad de dias de un mes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_fecha_a8bbe7d2a8e70d4d42d9e406b6aa617fe}\label{class_fecha_a8bbe7d2a8e70d4d42d9e406b6aa617fe} 
+std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&os, const \mbox{\hyperlink{class_fecha}{Fecha}} \&fecha)
+\begin{DoxyCompactList}\small\item\em Operador de salida para imprimir la fecha. \end{DoxyCompactList}\item 
+\Hypertarget{class_fecha_a443140e62287a8efbe3f7976c268b4ec}\label{class_fecha_a443140e62287a8efbe3f7976c268b4ec} 
+std\+::istream \& {\bfseries operator$>$$>$} (std\+::istream \&is, \mbox{\hyperlink{class_fecha}{Fecha}} \&fecha)
+\begin{DoxyCompactList}\small\item\em Operador de entrada para leer la fecha. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Representa una fecha. 
+
+\label{doc-constructors}
+\Hypertarget{class_fecha_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_fecha_a24780305ccbff2196f785153a2a7a59d}\index{Fecha@{Fecha}!Fecha@{Fecha}}
+\index{Fecha@{Fecha}!Fecha@{Fecha}}
+\doxysubsubsection{\texorpdfstring{Fecha()}{Fecha()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_fecha_a24780305ccbff2196f785153a2a7a59d} 
+Fecha\+::\+Fecha (\begin{DoxyParamCaption}\item[{int}]{d}{ = {\ttfamily 0}, }\item[{int}]{m}{ = {\ttfamily 0}, }\item[{int}]{a}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Constructor de la clase \doxylink{class_fecha}{Fecha}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & Dia. \\
+\hline
+{\em m} & Mes. \\
+\hline
+{\em a} & Anio. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_fecha_a67c04a53d4c0cc86cde767498343720e}\index{Fecha@{Fecha}!Fecha@{Fecha}}
+\index{Fecha@{Fecha}!Fecha@{Fecha}}
+\doxysubsubsection{\texorpdfstring{Fecha()}{Fecha()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_fecha_a67c04a53d4c0cc86cde767498343720e} 
+Fecha\+::\+Fecha (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_fecha}{Fecha}} \&}]{otra}{}\end{DoxyParamCaption})}
+
+
+
+Constructor de copia. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em otra} & Otra fecha. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_fecha_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_fecha_a381daccd70c6f1ce2c79304a5e3d94ba}\index{Fecha@{Fecha}!calcularEdad@{calcularEdad}}
+\index{calcularEdad@{calcularEdad}!Fecha@{Fecha}}
+\doxysubsubsection{\texorpdfstring{calcularEdad()}{calcularEdad()}}
+{\footnotesize\ttfamily \label{class_fecha_a381daccd70c6f1ce2c79304a5e3d94ba} 
+int Fecha\+::calcular\+Edad (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Calcula la edad a partir de la fecha. 
+
+\begin{DoxyReturn}{Returns}
+Edad. 
+\end{DoxyReturn}
+\Hypertarget{class_fecha_ac79e84039167db0d115c643ee2d7e8a3}\index{Fecha@{Fecha}!deserializar@{deserializar}}
+\index{deserializar@{deserializar}!Fecha@{Fecha}}
+\doxysubsubsection{\texorpdfstring{deserializar()}{deserializar()}}
+{\footnotesize\ttfamily \label{class_fecha_ac79e84039167db0d115c643ee2d7e8a3} 
+void Fecha\+::deserializar (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is}{}\end{DoxyParamCaption})}
+
+
+
+Deserializa la fecha desde un flujo de entrada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is} & Flujo de entrada. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_fecha_ae543bae3c3e8b774a61b808e07b96b25}\index{Fecha@{Fecha}!diasEnMesStatic@{diasEnMesStatic}}
+\index{diasEnMesStatic@{diasEnMesStatic}!Fecha@{Fecha}}
+\doxysubsubsection{\texorpdfstring{diasEnMesStatic()}{diasEnMesStatic()}}
+{\footnotesize\ttfamily \label{class_fecha_ae543bae3c3e8b774a61b808e07b96b25} 
+int Fecha\+::dias\+En\+Mes\+Static (\begin{DoxyParamCaption}\item[{int}]{mes}{, }\item[{int}]{anio}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Devuelve la cantidad de dias de un mes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mes} & Mes. \\
+\hline
+{\em anio} & Anio. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Dias en el mes. 
+\end{DoxyReturn}
+\Hypertarget{class_fecha_aba85ce0ba3fc9df115681ed6102d06d4}\index{Fecha@{Fecha}!esBisiesto@{esBisiesto}}
+\index{esBisiesto@{esBisiesto}!Fecha@{Fecha}}
+\doxysubsubsection{\texorpdfstring{esBisiesto()}{esBisiesto()}}
+{\footnotesize\ttfamily \label{class_fecha_aba85ce0ba3fc9df115681ed6102d06d4} 
+bool Fecha\+::es\+Bisiesto (\begin{DoxyParamCaption}\item[{int}]{anio}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Indica si un anio es bisiesto. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em anio} & Anio. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si es bisiesto. 
+\end{DoxyReturn}
+\Hypertarget{class_fecha_af798fcde227eeae0c6f648f96eade5f6}\index{Fecha@{Fecha}!esFechaFutura@{esFechaFutura}}
+\index{esFechaFutura@{esFechaFutura}!Fecha@{Fecha}}
+\doxysubsubsection{\texorpdfstring{esFechaFutura()}{esFechaFutura()}}
+{\footnotesize\ttfamily \label{class_fecha_af798fcde227eeae0c6f648f96eade5f6} 
+bool Fecha\+::es\+Fecha\+Futura (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Indica si la fecha es futura. 
+
+\begin{DoxyReturn}{Returns}
+true si es futura. 
+\end{DoxyReturn}
+\Hypertarget{class_fecha_a8d3a212c5fc8846762803479d20a2b47}\index{Fecha@{Fecha}!esFechaPasada@{esFechaPasada}}
+\index{esFechaPasada@{esFechaPasada}!Fecha@{Fecha}}
+\doxysubsubsection{\texorpdfstring{esFechaPasada()}{esFechaPasada()}}
+{\footnotesize\ttfamily \label{class_fecha_a8d3a212c5fc8846762803479d20a2b47} 
+bool Fecha\+::es\+Fecha\+Pasada (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Indica si la fecha es pasada. 
+
+\begin{DoxyReturn}{Returns}
+true si es pasada. 
+\end{DoxyReturn}
+\Hypertarget{class_fecha_a286e685460ca0f364c2a2a23afbae859}\index{Fecha@{Fecha}!esFechaValida@{esFechaValida}}
+\index{esFechaValida@{esFechaValida}!Fecha@{Fecha}}
+\doxysubsubsection{\texorpdfstring{esFechaValida()}{esFechaValida()}}
+{\footnotesize\ttfamily \label{class_fecha_a286e685460ca0f364c2a2a23afbae859} 
+bool Fecha\+::es\+Fecha\+Valida (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Indica si la fecha es valida. 
+
+\begin{DoxyReturn}{Returns}
+true si es valida. 
+\end{DoxyReturn}
+\Hypertarget{class_fecha_a7eb2a9f7b71bd1c5fc30a3bfffa00789}\index{Fecha@{Fecha}!esMayorQue@{esMayorQue}}
+\index{esMayorQue@{esMayorQue}!Fecha@{Fecha}}
+\doxysubsubsection{\texorpdfstring{esMayorQue()}{esMayorQue()}}
+{\footnotesize\ttfamily \label{class_fecha_a7eb2a9f7b71bd1c5fc30a3bfffa00789} 
+bool Fecha\+::es\+Mayor\+Que (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_fecha}{Fecha}} \&}]{otra}{, }\item[{int}]{anos}{}\end{DoxyParamCaption}) const}
+
+
+
+Indica si la fecha es mayor que otra en cierta cantidad de anos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em otra} & Otra fecha. \\
+\hline
+{\em anos} & Cantidad de anos. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si es mayor. 
+\end{DoxyReturn}
+\Hypertarget{class_fecha_a862f1b809dd0c0ce8bba667375e297ec}\index{Fecha@{Fecha}!fechaActual@{fechaActual}}
+\index{fechaActual@{fechaActual}!Fecha@{Fecha}}
+\doxysubsubsection{\texorpdfstring{fechaActual()}{fechaActual()}}
+{\footnotesize\ttfamily \label{class_fecha_a862f1b809dd0c0ce8bba667375e297ec} 
+\mbox{\hyperlink{class_fecha}{Fecha}} Fecha\+::fecha\+Actual (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Obtiene la fecha actual del sistema. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{class_fecha}{Fecha} actual. 
+\end{DoxyReturn}
+\Hypertarget{class_fecha_a56e3e7e4ced42919103b8b4a7a69554b}\index{Fecha@{Fecha}!getAnio@{getAnio}}
+\index{getAnio@{getAnio}!Fecha@{Fecha}}
+\doxysubsubsection{\texorpdfstring{getAnio()}{getAnio()}}
+{\footnotesize\ttfamily \label{class_fecha_a56e3e7e4ced42919103b8b4a7a69554b} 
+int Fecha\+::get\+Anio (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Obtiene el anio. 
+
+\begin{DoxyReturn}{Returns}
+Anio. 
+\end{DoxyReturn}
+\Hypertarget{class_fecha_a1a19e31dbeee015e1e178ad981d0968c}\index{Fecha@{Fecha}!getDia@{getDia}}
+\index{getDia@{getDia}!Fecha@{Fecha}}
+\doxysubsubsection{\texorpdfstring{getDia()}{getDia()}}
+{\footnotesize\ttfamily \label{class_fecha_a1a19e31dbeee015e1e178ad981d0968c} 
+int Fecha\+::get\+Dia (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Obtiene el dia. 
+
+\begin{DoxyReturn}{Returns}
+Dia. 
+\end{DoxyReturn}
+\Hypertarget{class_fecha_af0bd07ca520ec7b5bd0003e0164ddb7c}\index{Fecha@{Fecha}!getMes@{getMes}}
+\index{getMes@{getMes}!Fecha@{Fecha}}
+\doxysubsubsection{\texorpdfstring{getMes()}{getMes()}}
+{\footnotesize\ttfamily \label{class_fecha_af0bd07ca520ec7b5bd0003e0164ddb7c} 
+int Fecha\+::get\+Mes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Obtiene el mes. 
+
+\begin{DoxyReturn}{Returns}
+Mes. 
+\end{DoxyReturn}
+\Hypertarget{class_fecha_af4ff052c4c23be07de8d5bc70dd8bf78}\index{Fecha@{Fecha}!getMesStr@{getMesStr}}
+\index{getMesStr@{getMesStr}!Fecha@{Fecha}}
+\doxysubsubsection{\texorpdfstring{getMesStr()}{getMesStr()}}
+{\footnotesize\ttfamily \label{class_fecha_af4ff052c4c23be07de8d5bc70dd8bf78} 
+std\+::string Fecha\+::get\+Mes\+Str (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Devuelve el nombre del mes. 
+
+\begin{DoxyReturn}{Returns}
+Nombre del mes. 
+\end{DoxyReturn}
+\Hypertarget{class_fecha_ad6e3367e389379fd6fbb7449a3b311bd}\index{Fecha@{Fecha}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Fecha@{Fecha}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily \label{class_fecha_ad6e3367e389379fd6fbb7449a3b311bd} 
+bool Fecha\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_fecha}{Fecha}} \&}]{otra}{}\end{DoxyParamCaption}) const}
+
+
+
+Operador menor que. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em otra} & Otra fecha. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si es menor. 
+\end{DoxyReturn}
+\Hypertarget{class_fecha_a21919b6e8842a8b8481abe0207ef017b}\index{Fecha@{Fecha}!operator==@{operator==}}
+\index{operator==@{operator==}!Fecha@{Fecha}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily \label{class_fecha_a21919b6e8842a8b8481abe0207ef017b} 
+bool Fecha\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_fecha}{Fecha}} \&}]{otra}{}\end{DoxyParamCaption}) const}
+
+
+
+Operador de igualdad. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em otra} & Otra fecha. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si son iguales. 
+\end{DoxyReturn}
+\Hypertarget{class_fecha_a68fa6b3c0359408e66f3a42c293ca6e2}\index{Fecha@{Fecha}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!Fecha@{Fecha}}
+\doxysubsubsection{\texorpdfstring{operator$>$()}{operator>()}}
+{\footnotesize\ttfamily \label{class_fecha_a68fa6b3c0359408e66f3a42c293ca6e2} 
+bool Fecha\+::operator$>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_fecha}{Fecha}} \&}]{otra}{}\end{DoxyParamCaption}) const}
+
+
+
+Operador mayor que. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em otra} & Otra fecha. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si es mayor. 
+\end{DoxyReturn}
+\Hypertarget{class_fecha_af2f540b1826b4cae0d2c08e92528f4e2}\index{Fecha@{Fecha}!serializar@{serializar}}
+\index{serializar@{serializar}!Fecha@{Fecha}}
+\doxysubsubsection{\texorpdfstring{serializar()}{serializar()}}
+{\footnotesize\ttfamily \label{class_fecha_af2f540b1826b4cae0d2c08e92528f4e2} 
+void Fecha\+::serializar (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{}\end{DoxyParamCaption}) const}
+
+
+
+Serializa la fecha en un flujo de salida. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & Flujo de salida. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_fecha_a47ca2f1ef1c7e07efab00927a8864843}\index{Fecha@{Fecha}!setAnio@{setAnio}}
+\index{setAnio@{setAnio}!Fecha@{Fecha}}
+\doxysubsubsection{\texorpdfstring{setAnio()}{setAnio()}}
+{\footnotesize\ttfamily \label{class_fecha_a47ca2f1ef1c7e07efab00927a8864843} 
+void Fecha\+::set\+Anio (\begin{DoxyParamCaption}\item[{int}]{a}{}\end{DoxyParamCaption})}
+
+
+
+Establece el anio. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Anio. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_fecha_ae65d70b4f4a3230bd569fd64146fd018}\index{Fecha@{Fecha}!setDia@{setDia}}
+\index{setDia@{setDia}!Fecha@{Fecha}}
+\doxysubsubsection{\texorpdfstring{setDia()}{setDia()}}
+{\footnotesize\ttfamily \label{class_fecha_ae65d70b4f4a3230bd569fd64146fd018} 
+void Fecha\+::set\+Dia (\begin{DoxyParamCaption}\item[{int}]{d}{}\end{DoxyParamCaption})}
+
+
+
+Establece el dia. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & Dia. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_fecha_aff02d2faaa981e2986cda85d45a0b525}\index{Fecha@{Fecha}!setMes@{setMes}}
+\index{setMes@{setMes}!Fecha@{Fecha}}
+\doxysubsubsection{\texorpdfstring{setMes()}{setMes()}}
+{\footnotesize\ttfamily \label{class_fecha_aff02d2faaa981e2986cda85d45a0b525} 
+void Fecha\+::set\+Mes (\begin{DoxyParamCaption}\item[{int}]{m}{}\end{DoxyParamCaption})}
+
+
+
+Establece el mes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & Mes. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_fecha_8h}{Fecha.\+h}}\item 
+Fecha.\+cpp\end{DoxyCompactItemize}

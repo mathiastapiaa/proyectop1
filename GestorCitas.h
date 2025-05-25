@@ -1,7 +1,16 @@
+/**
+ * @file GestorCitas.h
+ * @brief Definicion de la clase GestorCitas.
+ */
+
 // GestorCitas.h
 #ifndef GESTOR_CITAS_H
 #define GESTOR_CITAS_H
 
+/**
+ * @class GestorCitas
+ * @brief Gestiona el sistema de citas medicas.
+ */
 #include "ListaDCircular.h"
 #include "Cita.h"
 #include "IMenu.h"
@@ -45,16 +54,62 @@ private:
     void buscarPorCedula() const;
 
 public:
+    /**
+     * @brief Constructor de la clase GestorCitas.
+     * @param archivo Ruta del archivo de citas.
+     */
     GestorCitas(const std::string& archivo = "data/citas.dat");
+
+    /**
+     * @brief Destructor de la clase GestorCitas.
+     */
     ~GestorCitas();
 
+    /**
+     * @brief Muestra el menu principal.
+     */
     void mostrar() const override;
+
+    /**
+     * @brief Ejecuta el ciclo principal del sistema.
+     */
     void ejecutar() override;
+
+    /**
+     * @brief Agrega una opcion al menu (extensible).
+     * @param opcion Opcion a agregar.
+     */
     void agregarOpcion(const std::string& opcion) override;
 
+    /**
+     * @brief Guarda las citas en archivo.
+     */
     void guardarCitas() const;
+
+    /**
+     * @brief Carga las citas desde archivo.
+     */
     void cargarCitas();
 
+    /**
+     * @brief Realiza un backup de las citas.
+     */
+    void realizarBackup() const;
+
+    /**
+     * @brief Restaura las citas desde el backup.
+     */
+    void restaurarDesdeBackup();
+
+    /**
+     * @brief Muestra la ayuda del sistema.
+     */
+    void mostrarAyuda() const;
+
+    /**
+     * @brief Obtiene la lista de citas.
+     * @return Referencia a la lista de citas.
+     */
     const ListaDCircular<Cita>& getCitas() const { return citas; }
 };
 

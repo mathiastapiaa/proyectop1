@@ -1,0 +1,290 @@
+\doxysection{Cita Class Reference}
+\hypertarget{class_cita}{}\label{class_cita}\index{Cita@{Cita}}
+
+
+Representa una cita medica.  
+
+
+
+
+{\ttfamily \#include $<$Cita.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_cita_a4b7c97c8a7cdde8d1d942a81dd13ad61}{Cita}} (const \mbox{\hyperlink{class_paciente}{Paciente}} \&pac=\mbox{\hyperlink{class_paciente}{Paciente}}(), const \mbox{\hyperlink{class_fecha}{Fecha}} \&fec=\mbox{\hyperlink{class_fecha}{Fecha}}(), const \mbox{\hyperlink{class_hora}{Hora}} \&hor=\mbox{\hyperlink{class_hora}{Hora}}(), \mbox{\hyperlink{_cita_8h_ab5e299b5cee549e70ee789c3b56c1c88}{Especialidad}} esp=Especialidad\+::\+CARDIOLOGIA, const string \&mot="{}"{})
+\begin{DoxyCompactList}\small\item\em Constructor de la clase \doxylink{class_cita}{Cita}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cita_abb943e3efbf037984f2b37ff291607bf}{serializar}} (std\+::ostream \&os) const
+\begin{DoxyCompactList}\small\item\em Serializa la cita en un flujo de salida. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cita_a574b4945ecc17e515555308c5a3769ce}{deserializar}} (std\+::istream \&is)
+\begin{DoxyCompactList}\small\item\em Deserializa la cita desde un flujo de entrada. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_paciente}{Paciente}} \mbox{\hyperlink{class_cita_ac783e992c32aede99405d3d7edcd1ebf}{get\+Paciente}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene el paciente de la cita. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_fecha}{Fecha}} \mbox{\hyperlink{class_cita_ae93c0b2dc79d31c1e006e7fec2716061}{get\+Fecha}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene la fecha de la cita. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_hora}{Hora}} \mbox{\hyperlink{class_cita_a73f9a2ad9440694c167b73bcf502ba0c}{get\+Hora}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene la hora de la cita. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_cita_8h_ab5e299b5cee549e70ee789c3b56c1c88}{Especialidad}} \mbox{\hyperlink{class_cita_ad0c272ef0355a7d4710f433910e67925}{get\+Especialidad}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene la especialidad de la cita. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_cita_a3daaa15bc306cf0b98d1fb6f973f59a9}{get\+Motivo}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene el motivo de la cita. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_cita_aa4b462d591d41973ed5dcc1b0467745d}{get\+Especialidad\+Str}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene la especialidad como string. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cita_abcd370ac61e66d03cd70a6233d16b9c5}{set\+Paciente}} (const \mbox{\hyperlink{class_paciente}{Paciente}} \&pac)
+\begin{DoxyCompactList}\small\item\em Establece el paciente de la cita. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cita_aba1ed34baf8c29dc88a0412ac0993368}{set\+Fecha}} (const \mbox{\hyperlink{class_fecha}{Fecha}} \&fec)
+\begin{DoxyCompactList}\small\item\em Establece la fecha de la cita. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cita_a8ec05e2322eb4b9d33d7c8d828438f37}{set\+Hora}} (const \mbox{\hyperlink{class_hora}{Hora}} \&hor)
+\begin{DoxyCompactList}\small\item\em Establece la hora de la cita. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cita_a7d7fe23578f510ded64d5b0ff27581ec}{set\+Especialidad}} (\mbox{\hyperlink{_cita_8h_ab5e299b5cee549e70ee789c3b56c1c88}{Especialidad}} esp)
+\begin{DoxyCompactList}\small\item\em Establece la especialidad de la cita. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cita_a9824b0b18b923b83cbcc18b7f6e9aae9}{set\+Motivo}} (const string \&mot)
+\begin{DoxyCompactList}\small\item\em Establece el motivo de la cita. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cita_a3748e554a78af956e7b239ceaae3e3e3}{operator==}} (const \mbox{\hyperlink{class_cita}{Cita}} \&otra) const
+\begin{DoxyCompactList}\small\item\em Compara si dos citas son iguales. \end{DoxyCompactList}\item 
+\Hypertarget{class_cita_a24cbda8a648025f3011210a9cdbb013c}\label{class_cita_a24cbda8a648025f3011210a9cdbb013c} 
+void {\bfseries mostrar\+Cita} () const
+\begin{DoxyCompactList}\small\item\em Muestra la informacion de la cita por consola. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Representa una cita medica. 
+
+\label{doc-constructors}
+\Hypertarget{class_cita_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_cita_a4b7c97c8a7cdde8d1d942a81dd13ad61}\index{Cita@{Cita}!Cita@{Cita}}
+\index{Cita@{Cita}!Cita@{Cita}}
+\doxysubsubsection{\texorpdfstring{Cita()}{Cita()}}
+{\footnotesize\ttfamily \label{class_cita_a4b7c97c8a7cdde8d1d942a81dd13ad61} 
+Cita\+::\+Cita (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_paciente}{Paciente}} \&}]{pac}{ = {\ttfamily \mbox{\hyperlink{class_paciente}{Paciente}}()}, }\item[{const \mbox{\hyperlink{class_fecha}{Fecha}} \&}]{fec}{ = {\ttfamily \mbox{\hyperlink{class_fecha}{Fecha}}()}, }\item[{const \mbox{\hyperlink{class_hora}{Hora}} \&}]{hor}{ = {\ttfamily \mbox{\hyperlink{class_hora}{Hora}}()}, }\item[{\mbox{\hyperlink{_cita_8h_ab5e299b5cee549e70ee789c3b56c1c88}{Especialidad}}}]{esp}{ = {\ttfamily Especialidad\+:\+:CARDIOLOGIA}, }\item[{const string \&}]{mot}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+
+
+Constructor de la clase \doxylink{class_cita}{Cita}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pac} & \doxylink{class_paciente}{Paciente} de la cita. \\
+\hline
+{\em fec} & \doxylink{class_fecha}{Fecha} de la cita. \\
+\hline
+{\em hor} & \doxylink{class_hora}{Hora} de la cita. \\
+\hline
+{\em esp} & \doxylink{_cita_8h_ab5e299b5cee549e70ee789c3b56c1c88}{Especialidad} de la cita. \\
+\hline
+{\em mot} & Motivo de la cita. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_cita_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_cita_a574b4945ecc17e515555308c5a3769ce}\index{Cita@{Cita}!deserializar@{deserializar}}
+\index{deserializar@{deserializar}!Cita@{Cita}}
+\doxysubsubsection{\texorpdfstring{deserializar()}{deserializar()}}
+{\footnotesize\ttfamily \label{class_cita_a574b4945ecc17e515555308c5a3769ce} 
+void Cita\+::deserializar (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is}{}\end{DoxyParamCaption})}
+
+
+
+Deserializa la cita desde un flujo de entrada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is} & Flujo de entrada. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_cita_ad0c272ef0355a7d4710f433910e67925}\index{Cita@{Cita}!getEspecialidad@{getEspecialidad}}
+\index{getEspecialidad@{getEspecialidad}!Cita@{Cita}}
+\doxysubsubsection{\texorpdfstring{getEspecialidad()}{getEspecialidad()}}
+{\footnotesize\ttfamily \label{class_cita_ad0c272ef0355a7d4710f433910e67925} 
+\mbox{\hyperlink{_cita_8h_ab5e299b5cee549e70ee789c3b56c1c88}{Especialidad}} Cita\+::get\+Especialidad (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Obtiene la especialidad de la cita. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{_cita_8h_ab5e299b5cee549e70ee789c3b56c1c88}{Especialidad}. 
+\end{DoxyReturn}
+\Hypertarget{class_cita_aa4b462d591d41973ed5dcc1b0467745d}\index{Cita@{Cita}!getEspecialidadStr@{getEspecialidadStr}}
+\index{getEspecialidadStr@{getEspecialidadStr}!Cita@{Cita}}
+\doxysubsubsection{\texorpdfstring{getEspecialidadStr()}{getEspecialidadStr()}}
+{\footnotesize\ttfamily \label{class_cita_aa4b462d591d41973ed5dcc1b0467745d} 
+string Cita\+::get\+Especialidad\+Str (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Obtiene la especialidad como string. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{_cita_8h_ab5e299b5cee549e70ee789c3b56c1c88}{Especialidad} en texto. 
+\end{DoxyReturn}
+\Hypertarget{class_cita_ae93c0b2dc79d31c1e006e7fec2716061}\index{Cita@{Cita}!getFecha@{getFecha}}
+\index{getFecha@{getFecha}!Cita@{Cita}}
+\doxysubsubsection{\texorpdfstring{getFecha()}{getFecha()}}
+{\footnotesize\ttfamily \label{class_cita_ae93c0b2dc79d31c1e006e7fec2716061} 
+\mbox{\hyperlink{class_fecha}{Fecha}} Cita\+::get\+Fecha (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Obtiene la fecha de la cita. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{class_fecha}{Fecha}. 
+\end{DoxyReturn}
+\Hypertarget{class_cita_a73f9a2ad9440694c167b73bcf502ba0c}\index{Cita@{Cita}!getHora@{getHora}}
+\index{getHora@{getHora}!Cita@{Cita}}
+\doxysubsubsection{\texorpdfstring{getHora()}{getHora()}}
+{\footnotesize\ttfamily \label{class_cita_a73f9a2ad9440694c167b73bcf502ba0c} 
+\mbox{\hyperlink{class_hora}{Hora}} Cita\+::get\+Hora (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Obtiene la hora de la cita. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{class_hora}{Hora}. 
+\end{DoxyReturn}
+\Hypertarget{class_cita_a3daaa15bc306cf0b98d1fb6f973f59a9}\index{Cita@{Cita}!getMotivo@{getMotivo}}
+\index{getMotivo@{getMotivo}!Cita@{Cita}}
+\doxysubsubsection{\texorpdfstring{getMotivo()}{getMotivo()}}
+{\footnotesize\ttfamily \label{class_cita_a3daaa15bc306cf0b98d1fb6f973f59a9} 
+string Cita\+::get\+Motivo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Obtiene el motivo de la cita. 
+
+\begin{DoxyReturn}{Returns}
+Motivo. 
+\end{DoxyReturn}
+\Hypertarget{class_cita_ac783e992c32aede99405d3d7edcd1ebf}\index{Cita@{Cita}!getPaciente@{getPaciente}}
+\index{getPaciente@{getPaciente}!Cita@{Cita}}
+\doxysubsubsection{\texorpdfstring{getPaciente()}{getPaciente()}}
+{\footnotesize\ttfamily \label{class_cita_ac783e992c32aede99405d3d7edcd1ebf} 
+\mbox{\hyperlink{class_paciente}{Paciente}} Cita\+::get\+Paciente (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Obtiene el paciente de la cita. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{class_paciente}{Paciente}. 
+\end{DoxyReturn}
+\Hypertarget{class_cita_a3748e554a78af956e7b239ceaae3e3e3}\index{Cita@{Cita}!operator==@{operator==}}
+\index{operator==@{operator==}!Cita@{Cita}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily \label{class_cita_a3748e554a78af956e7b239ceaae3e3e3} 
+bool Cita\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_cita}{Cita}} \&}]{otra}{}\end{DoxyParamCaption}) const}
+
+
+
+Compara si dos citas son iguales. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em otra} & Otra cita. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si son iguales. 
+\end{DoxyReturn}
+\Hypertarget{class_cita_abb943e3efbf037984f2b37ff291607bf}\index{Cita@{Cita}!serializar@{serializar}}
+\index{serializar@{serializar}!Cita@{Cita}}
+\doxysubsubsection{\texorpdfstring{serializar()}{serializar()}}
+{\footnotesize\ttfamily \label{class_cita_abb943e3efbf037984f2b37ff291607bf} 
+void Cita\+::serializar (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{}\end{DoxyParamCaption}) const}
+
+
+
+Serializa la cita en un flujo de salida. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & Flujo de salida. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_cita_a7d7fe23578f510ded64d5b0ff27581ec}\index{Cita@{Cita}!setEspecialidad@{setEspecialidad}}
+\index{setEspecialidad@{setEspecialidad}!Cita@{Cita}}
+\doxysubsubsection{\texorpdfstring{setEspecialidad()}{setEspecialidad()}}
+{\footnotesize\ttfamily \label{class_cita_a7d7fe23578f510ded64d5b0ff27581ec} 
+void Cita\+::set\+Especialidad (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_cita_8h_ab5e299b5cee549e70ee789c3b56c1c88}{Especialidad}}}]{esp}{}\end{DoxyParamCaption})}
+
+
+
+Establece la especialidad de la cita. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em esp} & \doxylink{_cita_8h_ab5e299b5cee549e70ee789c3b56c1c88}{Especialidad}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_cita_aba1ed34baf8c29dc88a0412ac0993368}\index{Cita@{Cita}!setFecha@{setFecha}}
+\index{setFecha@{setFecha}!Cita@{Cita}}
+\doxysubsubsection{\texorpdfstring{setFecha()}{setFecha()}}
+{\footnotesize\ttfamily \label{class_cita_aba1ed34baf8c29dc88a0412ac0993368} 
+void Cita\+::set\+Fecha (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_fecha}{Fecha}} \&}]{fec}{}\end{DoxyParamCaption})}
+
+
+
+Establece la fecha de la cita. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fec} & \doxylink{class_fecha}{Fecha}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_cita_a8ec05e2322eb4b9d33d7c8d828438f37}\index{Cita@{Cita}!setHora@{setHora}}
+\index{setHora@{setHora}!Cita@{Cita}}
+\doxysubsubsection{\texorpdfstring{setHora()}{setHora()}}
+{\footnotesize\ttfamily \label{class_cita_a8ec05e2322eb4b9d33d7c8d828438f37} 
+void Cita\+::set\+Hora (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_hora}{Hora}} \&}]{hor}{}\end{DoxyParamCaption})}
+
+
+
+Establece la hora de la cita. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hor} & \doxylink{class_hora}{Hora}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_cita_a9824b0b18b923b83cbcc18b7f6e9aae9}\index{Cita@{Cita}!setMotivo@{setMotivo}}
+\index{setMotivo@{setMotivo}!Cita@{Cita}}
+\doxysubsubsection{\texorpdfstring{setMotivo()}{setMotivo()}}
+{\footnotesize\ttfamily \label{class_cita_a9824b0b18b923b83cbcc18b7f6e9aae9} 
+void Cita\+::set\+Motivo (\begin{DoxyParamCaption}\item[{const string \&}]{mot}{}\end{DoxyParamCaption})}
+
+
+
+Establece el motivo de la cita. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mot} & Motivo. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_cita_abcd370ac61e66d03cd70a6233d16b9c5}\index{Cita@{Cita}!setPaciente@{setPaciente}}
+\index{setPaciente@{setPaciente}!Cita@{Cita}}
+\doxysubsubsection{\texorpdfstring{setPaciente()}{setPaciente()}}
+{\footnotesize\ttfamily \label{class_cita_abcd370ac61e66d03cd70a6233d16b9c5} 
+void Cita\+::set\+Paciente (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_paciente}{Paciente}} \&}]{pac}{}\end{DoxyParamCaption})}
+
+
+
+Establece el paciente de la cita. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pac} & \doxylink{class_paciente}{Paciente}. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_cita_8h}{Cita.\+h}}\item 
+\mbox{\hyperlink{_cita_8cpp}{Cita.\+cpp}}\end{DoxyCompactItemize}

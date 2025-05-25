@@ -1,0 +1,244 @@
+\doxysection{Persona Class Reference}
+\hypertarget{class_persona}{}\label{class_persona}\index{Persona@{Persona}}
+
+
+Clase base para personas.  
+
+
+
+
+{\ttfamily \#include $<$Persona.\+h$>$}
+
+Inheritance diagram for Persona\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_persona}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_persona_a3f7e286c137152f539392e39278d664f}{Persona}} (const string \&nom="{}"{}, const string \&ced="{}"{}, const \mbox{\hyperlink{class_fecha}{Fecha}} \&fn=\mbox{\hyperlink{class_fecha}{Fecha}}())
+\begin{DoxyCompactList}\small\item\em Constructor de la clase \doxylink{class_persona}{Persona}. \end{DoxyCompactList}\item 
+\Hypertarget{class_persona_a6054c4b887594e8748771598fa734044}\label{class_persona_a6054c4b887594e8748771598fa734044} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Persona} ()=default
+\begin{DoxyCompactList}\small\item\em Destructor virtual. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_persona_a817c73f3687bbaf12dd76f06eaa5ff4d}{serializar}} (std\+::ostream \&os) const
+\begin{DoxyCompactList}\small\item\em Serializa la persona en un flujo de salida. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_persona_a04bec21a7508241fab7e5bf5c225a634}{deserializar}} (std\+::istream \&is)
+\begin{DoxyCompactList}\small\item\em Deserializa la persona desde un flujo de entrada. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_persona_a9b69d3ceb2fd8303b3a940bf80bf01cb}{get\+Nombre}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene el nombre de la persona. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_persona_acd215c1b3685860818dfa2bcb247ea2a}{get\+Cedula}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene la cedula de la persona. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_fecha}{Fecha}} \mbox{\hyperlink{class_persona_ad1f7ca7daee0ab843354d0a9b3dcef1d}{get\+Fecha\+Nacimiento}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene la fecha de nacimiento. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_persona_aefe0d245c256789528c1bd95acf8950b}{get\+Edad}} () const
+\begin{DoxyCompactList}\small\item\em Calcula la edad de la persona. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_persona_a830e698682a31607d518556945a6cb09}{set\+Nombre}} (const string \&nom)
+\begin{DoxyCompactList}\small\item\em Establece el nombre de la persona. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_persona_a587b9b8ceec611f84681bdd14fe33698}{set\+Cedula}} (const string \&ced)
+\begin{DoxyCompactList}\small\item\em Establece la cedula de la persona. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_persona_ae108f69625efc44498554d40dbc66036}{set\+Fecha\+Nacimiento}} (const \mbox{\hyperlink{class_fecha}{Fecha}} \&fn)
+\begin{DoxyCompactList}\small\item\em Establece la fecha de nacimiento. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_persona_a7622e7d27927f20d2bf7269ecf1e354d}{mostrar\+Informacion}} () const
+\begin{DoxyCompactList}\small\item\em Muestra la informacion de la persona por consola. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_persona_a08be6fe295c330f6fb2d479d466f2946}\label{class_persona_a08be6fe295c330f6fb2d479d466f2946} 
+string {\bfseries nombre}
+\item 
+\Hypertarget{class_persona_afcb1341557bb10a7e00459db70fb8b27}\label{class_persona_afcb1341557bb10a7e00459db70fb8b27} 
+string {\bfseries cedula}
+\item 
+\Hypertarget{class_persona_ab600b16176d97dd39875fab853eab9dd}\label{class_persona_ab600b16176d97dd39875fab853eab9dd} 
+\mbox{\hyperlink{class_fecha}{Fecha}} {\bfseries fecha\+Nacimiento}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Clase base para personas. 
+
+\label{doc-constructors}
+\Hypertarget{class_persona_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_persona_a3f7e286c137152f539392e39278d664f}\index{Persona@{Persona}!Persona@{Persona}}
+\index{Persona@{Persona}!Persona@{Persona}}
+\doxysubsubsection{\texorpdfstring{Persona()}{Persona()}}
+{\footnotesize\ttfamily \label{class_persona_a3f7e286c137152f539392e39278d664f} 
+Persona\+::\+Persona (\begin{DoxyParamCaption}\item[{const string \&}]{nom}{ = {\ttfamily "{}"{}}, }\item[{const string \&}]{ced}{ = {\ttfamily "{}"{}}, }\item[{const \mbox{\hyperlink{class_fecha}{Fecha}} \&}]{fn}{ = {\ttfamily \mbox{\hyperlink{class_fecha}{Fecha}}()}}\end{DoxyParamCaption})}
+
+
+
+Constructor de la clase \doxylink{class_persona}{Persona}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nom} & Nombre de la persona. \\
+\hline
+{\em ced} & Cedula de la persona. \\
+\hline
+{\em fn} & \doxylink{class_fecha}{Fecha} de nacimiento. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_persona_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_persona_a04bec21a7508241fab7e5bf5c225a634}\index{Persona@{Persona}!deserializar@{deserializar}}
+\index{deserializar@{deserializar}!Persona@{Persona}}
+\doxysubsubsection{\texorpdfstring{deserializar()}{deserializar()}}
+{\footnotesize\ttfamily \label{class_persona_a04bec21a7508241fab7e5bf5c225a634} 
+void Persona\+::deserializar (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Deserializa la persona desde un flujo de entrada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is} & Flujo de entrada. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{class_paciente_a22ae612644bb8a896a2e35c922a29c05}{Paciente}}.
+
+\Hypertarget{class_persona_acd215c1b3685860818dfa2bcb247ea2a}\index{Persona@{Persona}!getCedula@{getCedula}}
+\index{getCedula@{getCedula}!Persona@{Persona}}
+\doxysubsubsection{\texorpdfstring{getCedula()}{getCedula()}}
+{\footnotesize\ttfamily \label{class_persona_acd215c1b3685860818dfa2bcb247ea2a} 
+string Persona\+::get\+Cedula (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Obtiene la cedula de la persona. 
+
+\begin{DoxyReturn}{Returns}
+Cedula. 
+\end{DoxyReturn}
+\Hypertarget{class_persona_aefe0d245c256789528c1bd95acf8950b}\index{Persona@{Persona}!getEdad@{getEdad}}
+\index{getEdad@{getEdad}!Persona@{Persona}}
+\doxysubsubsection{\texorpdfstring{getEdad()}{getEdad()}}
+{\footnotesize\ttfamily \label{class_persona_aefe0d245c256789528c1bd95acf8950b} 
+int Persona\+::get\+Edad (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Calcula la edad de la persona. 
+
+\begin{DoxyReturn}{Returns}
+Edad. 
+\end{DoxyReturn}
+\Hypertarget{class_persona_ad1f7ca7daee0ab843354d0a9b3dcef1d}\index{Persona@{Persona}!getFechaNacimiento@{getFechaNacimiento}}
+\index{getFechaNacimiento@{getFechaNacimiento}!Persona@{Persona}}
+\doxysubsubsection{\texorpdfstring{getFechaNacimiento()}{getFechaNacimiento()}}
+{\footnotesize\ttfamily \label{class_persona_ad1f7ca7daee0ab843354d0a9b3dcef1d} 
+\mbox{\hyperlink{class_fecha}{Fecha}} Persona\+::get\+Fecha\+Nacimiento (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Obtiene la fecha de nacimiento. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{class_fecha}{Fecha} de nacimiento. 
+\end{DoxyReturn}
+\Hypertarget{class_persona_a9b69d3ceb2fd8303b3a940bf80bf01cb}\index{Persona@{Persona}!getNombre@{getNombre}}
+\index{getNombre@{getNombre}!Persona@{Persona}}
+\doxysubsubsection{\texorpdfstring{getNombre()}{getNombre()}}
+{\footnotesize\ttfamily \label{class_persona_a9b69d3ceb2fd8303b3a940bf80bf01cb} 
+string Persona\+::get\+Nombre (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Obtiene el nombre de la persona. 
+
+\begin{DoxyReturn}{Returns}
+Nombre. 
+\end{DoxyReturn}
+\Hypertarget{class_persona_a7622e7d27927f20d2bf7269ecf1e354d}\index{Persona@{Persona}!mostrarInformacion@{mostrarInformacion}}
+\index{mostrarInformacion@{mostrarInformacion}!Persona@{Persona}}
+\doxysubsubsection{\texorpdfstring{mostrarInformacion()}{mostrarInformacion()}}
+{\footnotesize\ttfamily \label{class_persona_a7622e7d27927f20d2bf7269ecf1e354d} 
+void Persona\+::mostrar\+Informacion (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Muestra la informacion de la persona por consola. 
+
+
+
+Reimplemented in \mbox{\hyperlink{class_paciente_af6e007c43147f4c6412b4f243330cfdb}{Paciente}}.
+
+\Hypertarget{class_persona_a817c73f3687bbaf12dd76f06eaa5ff4d}\index{Persona@{Persona}!serializar@{serializar}}
+\index{serializar@{serializar}!Persona@{Persona}}
+\doxysubsubsection{\texorpdfstring{serializar()}{serializar()}}
+{\footnotesize\ttfamily \label{class_persona_a817c73f3687bbaf12dd76f06eaa5ff4d} 
+void Persona\+::serializar (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Serializa la persona en un flujo de salida. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & Flujo de salida. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{class_paciente_a1c995399601653f7918b6285d920df3f}{Paciente}}.
+
+\Hypertarget{class_persona_a587b9b8ceec611f84681bdd14fe33698}\index{Persona@{Persona}!setCedula@{setCedula}}
+\index{setCedula@{setCedula}!Persona@{Persona}}
+\doxysubsubsection{\texorpdfstring{setCedula()}{setCedula()}}
+{\footnotesize\ttfamily \label{class_persona_a587b9b8ceec611f84681bdd14fe33698} 
+void Persona\+::set\+Cedula (\begin{DoxyParamCaption}\item[{const string \&}]{ced}{}\end{DoxyParamCaption})}
+
+
+
+Establece la cedula de la persona. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ced} & Cedula. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_persona_ae108f69625efc44498554d40dbc66036}\index{Persona@{Persona}!setFechaNacimiento@{setFechaNacimiento}}
+\index{setFechaNacimiento@{setFechaNacimiento}!Persona@{Persona}}
+\doxysubsubsection{\texorpdfstring{setFechaNacimiento()}{setFechaNacimiento()}}
+{\footnotesize\ttfamily \label{class_persona_ae108f69625efc44498554d40dbc66036} 
+void Persona\+::set\+Fecha\+Nacimiento (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_fecha}{Fecha}} \&}]{fn}{}\end{DoxyParamCaption})}
+
+
+
+Establece la fecha de nacimiento. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fn} & \doxylink{class_fecha}{Fecha} de nacimiento. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_persona_a830e698682a31607d518556945a6cb09}\index{Persona@{Persona}!setNombre@{setNombre}}
+\index{setNombre@{setNombre}!Persona@{Persona}}
+\doxysubsubsection{\texorpdfstring{setNombre()}{setNombre()}}
+{\footnotesize\ttfamily \label{class_persona_a830e698682a31607d518556945a6cb09} 
+void Persona\+::set\+Nombre (\begin{DoxyParamCaption}\item[{const string \&}]{nom}{}\end{DoxyParamCaption})}
+
+
+
+Establece el nombre de la persona. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nom} & Nombre. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_persona_8h}{Persona.\+h}}\item 
+Persona.\+cpp\end{DoxyCompactItemize}

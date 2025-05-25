@@ -1,0 +1,55 @@
+\doxysection{Hora.\+h}
+\hypertarget{_hora_8h_source}{}\label{_hora_8h_source}\mbox{\hyperlink{_hora_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ HORA\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ HORA\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_hora_ac2d6f1b994e7d50f3ae08436f13c7bfb}{Hora}}\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ hora,\ minuto,\ segundo;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ validarHora()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_hora_ac2d6f1b994e7d50f3ae08436f13c7bfb}{Hora}}(\textcolor{keywordtype}{int}\ h\ =\ -\/1,\ \textcolor{keywordtype}{int}\ m\ =\ -\/1,\ \textcolor{keywordtype}{int}\ s\ =\ -\/1);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{class_hora_ac2d6f1b994e7d50f3ae08436f13c7bfb}{Hora}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_hora_ac2d6f1b994e7d50f3ae08436f13c7bfb}{Hora}}\&\ otra);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_hora_a82c78bc5f58d68def3742a8f0461edc2}{serializar}}(std::ostream\&\ os)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_hora_a87714b34d50c993b23669129370d8e6e}{deserializar}}(std::istream\&\ is);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_hora_a70af0f16ecd56ecec24b9068c7515282}{getHora}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_hora_a00c9ccc3c09ea751179d74d895459b33}{getMinuto}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_hora_af5cb73f8774b3fdda941eba3bbcc2860}{getSegundo}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_hora_a35403074ace8cb745ef751184228c202}{setHora}}(\textcolor{keywordtype}{int}\ h);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_hora_a39bb851693738bee48a8fb72317d2955}{setMinuto}}(\textcolor{keywordtype}{int}\ m);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_hora_af0298250f35dc1ae8a6b7a4de372ea28}{setSegundo}}(\textcolor{keywordtype}{int}\ s);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_hora_a389f3ab51d36e81cf999444b891dd88a}{operator<}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_hora_ac2d6f1b994e7d50f3ae08436f13c7bfb}{Hora}}\&\ otra)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_hora_a1ef62de99304edab3ed04b44b4ed93fb}{operator>}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_hora_ac2d6f1b994e7d50f3ae08436f13c7bfb}{Hora}}\&\ otra)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_hora_a427bd26b3020f203022583e32b4369c3}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_hora_ac2d6f1b994e7d50f3ae08436f13c7bfb}{Hora}}\&\ otra)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_hora_a900da90b29361757bf14b5f5c78470c8}{esHoraValida}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keyword}{friend}\ ostream\&\ \mbox{\hyperlink{class_hora_ac672fa5834eb56243a71f2c97e74cd82}{operator<<}}(ostream\&\ os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_hora_ac2d6f1b994e7d50f3ae08436f13c7bfb}{Hora}}\&\ hora);}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keyword}{friend}\ istream\&\ \mbox{\hyperlink{class_hora_a271a3f12e93428c5d8ed88e6ea7e1dd7}{operator>>}}(istream\&\ is,\ \mbox{\hyperlink{class_hora_ac2d6f1b994e7d50f3ae08436f13c7bfb}{Hora}}\&\ hora);}
+\DoxyCodeLine{00122\ \};}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ HORA\_H}}
+
+\end{DoxyCode}

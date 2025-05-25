@@ -10,6 +10,18 @@ Fecha::Fecha(int d, int m, int a) : dia(d), mes(m), anio(a) {
 
 Fecha::Fecha(const Fecha& otra) : dia(otra.dia), mes(otra.mes), anio(otra.anio) {}
 
+void Fecha::serializar(std::ostream& os) const {
+    os.write(reinterpret_cast<const char*>(&dia), sizeof(dia));
+    os.write(reinterpret_cast<const char*>(&mes), sizeof(mes));
+    os.write(reinterpret_cast<const char*>(&anio), sizeof(anio));
+}
+
+void Fecha::deserializar(std::istream& is) {
+    is.read(reinterpret_cast<char*>(&dia), sizeof(dia));
+    is.read(reinterpret_cast<char*>(&mes), sizeof(mes));
+    is.read(reinterpret_cast<char*>(&anio), sizeof(anio));
+}
+
 int Fecha::getDia() const { return dia; }
 int Fecha::getMes() const { return mes; }
 int Fecha::getAnio() const { return anio; }

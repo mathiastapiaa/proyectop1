@@ -11,6 +11,18 @@ Hora::Hora(int h, int m, int s) : hora(h), minuto(m), segundo(s) {
 
 Hora::Hora(const Hora& otra) : hora(otra.hora), minuto(otra.minuto), segundo(otra.segundo) {}
 
+void Hora::serializar(std::ostream& os) const {
+    os.write(reinterpret_cast<const char*>(&hora), sizeof(hora));
+    os.write(reinterpret_cast<const char*>(&minuto), sizeof(minuto));
+    os.write(reinterpret_cast<const char*>(&segundo), sizeof(segundo));
+}
+
+void Hora::deserializar(std::istream& is) {
+    is.read(reinterpret_cast<char*>(&hora), sizeof(hora));
+    is.read(reinterpret_cast<char*>(&minuto), sizeof(minuto));
+    is.read(reinterpret_cast<char*>(&segundo), sizeof(segundo));
+}
+
 int Hora::getHora() const { return hora; }
 int Hora::getMinuto() const { return minuto; }
 int Hora::getSegundo() const { return segundo; }

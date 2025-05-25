@@ -1,0 +1,64 @@
+\doxysection{Cita.\+h}
+\hypertarget{_cita_8h_source}{}\label{_cita_8h_source}\mbox{\hyperlink{_cita_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#ifndef\ CITA\_H}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ CITA\_H}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_paciente_8h}{Paciente.h}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_fecha_8h}{Fecha.h}}"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_hora_8h}{Hora.h}}"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{_cita_8h_ab5e299b5cee549e70ee789c3b56c1c88}{Especialidad}}\ \{\ CARDIOLOGIA,\ PEDIATRIA,\ DERMATOLOGIA,\ GINECOLOGIA,\ MEDICO\_GENERAL\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_cita_a4b7c97c8a7cdde8d1d942a81dd13ad61}{Cita}}\ \{}
+\DoxyCodeLine{00032\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{class_paciente}{Paciente}}\ paciente;}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{class_fecha}{Fecha}}\ fecha;}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{class_hora}{Hora}}\ hora;}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{_cita_8h_ab5e299b5cee549e70ee789c3b56c1c88}{Especialidad}}\ especialidad;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{string}\ motivo;}
+\DoxyCodeLine{00038\ \ \ \ \ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{class_cita_a4b7c97c8a7cdde8d1d942a81dd13ad61}{Cita}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_paciente}{Paciente}}\&\ pac\ =\ \mbox{\hyperlink{class_paciente}{Paciente}}(),\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_fecha}{Fecha}}\&\ fec\ =\ \mbox{\hyperlink{class_fecha}{Fecha}}(),\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_hora}{Hora}}\&\ hor\ =\ \mbox{\hyperlink{class_hora}{Hora}}(),\ \mbox{\hyperlink{_cita_8h_ab5e299b5cee549e70ee789c3b56c1c88}{Especialidad}}\ esp\ =\ Especialidad::CARDIOLOGIA,\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ mot\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cita_abb943e3efbf037984f2b37ff291607bf}{serializar}}(std::ostream\&\ os)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cita_a574b4945ecc17e515555308c5a3769ce}{deserializar}}(std::istream\&\ is);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{class_paciente}{Paciente}}\ \mbox{\hyperlink{class_cita_ac783e992c32aede99405d3d7edcd1ebf}{getPaciente}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{class_fecha}{Fecha}}\ \mbox{\hyperlink{class_cita_ae93c0b2dc79d31c1e006e7fec2716061}{getFecha}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{class_hora}{Hora}}\ \mbox{\hyperlink{class_cita_a73f9a2ad9440694c167b73bcf502ba0c}{getHora}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{_cita_8h_ab5e299b5cee549e70ee789c3b56c1c88}{Especialidad}}\ \mbox{\hyperlink{class_cita_ad0c272ef0355a7d4710f433910e67925}{getEspecialidad}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_cita_a3daaa15bc306cf0b98d1fb6f973f59a9}{getMotivo}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_cita_aa4b462d591d41973ed5dcc1b0467745d}{getEspecialidadStr}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cita_abcd370ac61e66d03cd70a6233d16b9c5}{setPaciente}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_paciente}{Paciente}}\&\ pac);}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cita_aba1ed34baf8c29dc88a0412ac0993368}{setFecha}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_fecha}{Fecha}}\&\ fec);}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cita_a8ec05e2322eb4b9d33d7c8d828438f37}{setHora}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_hora}{Hora}}\&\ hor);}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cita_a7d7fe23578f510ded64d5b0ff27581ec}{setEspecialidad}}(\mbox{\hyperlink{_cita_8h_ab5e299b5cee549e70ee789c3b56c1c88}{Especialidad}}\ esp);}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cita_a9824b0b18b923b83cbcc18b7f6e9aae9}{setMotivo}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ mot);}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_cita_a3748e554a78af956e7b239ceaae3e3e3}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_cita_a4b7c97c8a7cdde8d1d942a81dd13ad61}{Cita}}\&\ otra)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cita_a24cbda8a648025f3011210a9cdbb013c}{mostrarCita}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00141\ \};}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CITA\_H}}
+
+\end{DoxyCode}

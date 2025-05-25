@@ -1,0 +1,34 @@
+\doxysection{Paciente.\+h}
+\hypertarget{_paciente_8h_source}{}\label{_paciente_8h_source}\mbox{\hyperlink{_paciente_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ PACIENTE\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ PACIENTE\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_persona_8h}{Persona.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_paciente_af237f045043da3947ae7f328eed8289d}{Paciente}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_persona_a3f7e286c137152f539392e39278d664f}{Persona}}\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{string}\ historialMedico;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_paciente_af237f045043da3947ae7f328eed8289d}{Paciente}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ nom\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ ced\ =\ \textcolor{stringliteral}{"{}"{}},\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_fecha}{Fecha}}\&\ fn\ =\ \mbox{\hyperlink{class_fecha}{Fecha}}(),\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ hist\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_paciente_a1d02d8ed774e2798583ef1a582ddcd54}{getHistorialMedico}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_paciente_a58afef1dd5b515c9146df30c3a400c74}{setHistorialMedico}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ hist);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_paciente_af6e007c43147f4c6412b4f243330cfdb}{mostrarInformacion}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_paciente_a1c995399601653f7918b6285d920df3f}{serializar}}(std::ostream\&\ os)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_paciente_a22ae612644bb8a896a2e35c922a29c05}{deserializar}}(std::istream\&\ is)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00060\ \};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PACIENTE\_H\ \ \ \ }}
+
+\end{DoxyCode}

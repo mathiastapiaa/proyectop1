@@ -1,0 +1,173 @@
+\doxysection{Lista\+DCircular.\+h}
+\hypertarget{_lista_d_circular_8h_source}{}\label{_lista_d_circular_8h_source}\mbox{\hyperlink{_lista_d_circular_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ LISTA\_DCIRCULAR\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ LISTA\_DCIRCULAR\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }ListaDCircular\ \{}
+\DoxyCodeLine{00027\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{struct\ }Nodo\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ T\ dato;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ Nodo*\ siguiente;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ Nodo*\ anterior;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ Nodo(\textcolor{keyword}{const}\ T\&\ dato)\ :\ dato(dato),\ siguiente(\textcolor{keyword}{nullptr}),\ anterior(\textcolor{keyword}{nullptr})\ \{\}}
+\DoxyCodeLine{00034\ \ \ \ \ \};}
+\DoxyCodeLine{00035\ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ Nodo*\ cabeza;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ tamanio;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ forEachRecursivo(Nodo*\ actual,\ std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ T\&)>\ func,\ Nodo*\ inicio,\ \textcolor{keywordtype}{bool}\ primeraVez)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!primeraVez\ \&\&\ actual\ ==\ inicio)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ func(actual-\/>dato);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ forEachRecursivo(actual-\/>siguiente,\ func,\ inicio,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00046\ \ \ \ \ ListaDCircular()\ :\ cabeza(\textcolor{keyword}{nullptr}),\ tamanio(0)\ \{\}}
+\DoxyCodeLine{00047\ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \string~ListaDCircular()\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_lista_d_circular_ad5642c67791d0d5256f8f86cf1c25f6c}{limpiar}}();}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lista_d_circular_ac4af57dcf7f8324842f6a3c67461836b}{insertar}}(\textcolor{keyword}{const}\ T\&\ dato)\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ Nodo*\ nuevo\ =\ \textcolor{keyword}{new}\ Nodo(dato);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cabeza\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ nuevo-\/>siguiente\ =\ nuevo;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ nuevo-\/>anterior\ =\ nuevo;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ cabeza\ =\ nuevo;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ Nodo*\ ultimo\ =\ cabeza-\/>anterior;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ nuevo-\/>siguiente\ =\ cabeza;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ nuevo-\/>anterior\ =\ ultimo;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ ultimo-\/>siguiente\ =\ nuevo;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ cabeza-\/>anterior\ =\ nuevo;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ tamanio++;}
+\DoxyCodeLine{00073\ \ \ \ \ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_lista_d_circular_a99969b8b63d6cc492d0b0a7d06c4f559}{eliminar}}(\textcolor{keyword}{const}\ T\&\ dato)\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cabeza\ ==\ \textcolor{keyword}{nullptr})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ Nodo*\ actual\ =\ cabeza;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ encontrado\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (actual-\/>dato\ ==\ dato)\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ encontrado\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ actual\ =\ actual-\/>siguiente;}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (actual\ !=\ cabeza);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!encontrado)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_lista_d_circular_a87eb43e8ce0bfd94503cd1e31f56677c}{eliminarNodo}}(actual);}
+\DoxyCodeLine{00097\ \ \ \ \ \}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_lista_d_circular_a87eb43e8ce0bfd94503cd1e31f56677c}{eliminarNodo}}(Nodo*\ nodoAEliminar)\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nodoAEliminar\ ==\ \textcolor{keyword}{nullptr})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tamanio\ ==\ 1)\ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ cabeza\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ nodoAEliminar-\/>anterior-\/>siguiente\ =\ nodoAEliminar-\/>siguiente;}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ nodoAEliminar-\/>siguiente-\/>anterior\ =\ nodoAEliminar-\/>anterior;}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nodoAEliminar\ ==\ cabeza)\ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cabeza\ =\ nodoAEliminar-\/>siguiente;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ nodoAEliminar;}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ tamanio-\/-\/;}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00121\ \ \ \ \ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_lista_d_circular_aae8864716edf567765d6e9318c034cb6}{buscar}}(\textcolor{keyword}{const}\ T\&\ dato)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cabeza\ ==\ \textcolor{keyword}{nullptr})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ Nodo*\ actual\ =\ cabeza;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (actual-\/>dato\ ==\ dato)\ \{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ actual\ =\ actual-\/>siguiente;}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (actual\ !=\ cabeza);}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00141\ \ \ \ \ \}}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lista_d_circular_acb698131ccdb037a070842ee50a42c2f}{forEach}}(std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ T\&)>\ func)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cabeza\ ==\ \textcolor{keyword}{nullptr})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ Nodo*\ actual\ =\ cabeza;}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ func(actual-\/>dato);}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ actual\ =\ actual-\/>siguiente;}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (actual\ !=\ cabeza);}
+\DoxyCodeLine{00156\ \ \ \ \ \}}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lista_d_circular_ab6ebcf5f0359fd2f3e931f16cc5d8dfa}{forEachRecursivo}}(std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ T\&)>\ func)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cabeza\ !=\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ forEachRecursivo(cabeza,\ func,\ cabeza,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00166\ \ \ \ \ \}}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lista_d_circular_ad5642c67791d0d5256f8f86cf1c25f6c}{limpiar}}()\ \{}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!\mbox{\hyperlink{class_lista_d_circular_a4261d50889eaeb304086d3ae7148934d}{estaVacia}}())\ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_lista_d_circular_a87eb43e8ce0bfd94503cd1e31f56677c}{eliminarNodo}}(cabeza);}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00175\ \ \ \ \ \}}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_lista_d_circular_a2b47c2aca2b87b049f6b3786dc784da4}{getTamanio}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ tamanio;\ \}}
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_lista_d_circular_a4261d50889eaeb304086d3ae7148934d}{estaVacia}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ tamanio\ ==\ 0;\ \}}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{comment}{//\ Métodos\ de\ serialización/deserialización\ para\ tipos\ con\ métodos\ propios}}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U\ =\ T>}
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keyword}{typename}\ std::enable\_if<std::is\_member\_function\_pointer<\textcolor{keyword}{decltype}(\&U::serializar)>::value>::type}
+\DoxyCodeLine{00195\ \ \ \ \ \mbox{\hyperlink{class_lista_d_circular_a68861aab87028cd7b307a5dd6bde7c65}{guardarEnArchivo}}(\textcolor{keyword}{const}\ std::string\&\ nombreArchivo)\ \textcolor{keyword}{const}\ \{}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ std::ofstream\ archivo(nombreArchivo,\ std::ios::binary);}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!archivo)\ \{}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}No\ se\ pudo\ abrir\ el\ archivo\ para\ escritura"{}});}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ cantidad\ =\ tamanio;}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ archivo.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&cantidad),\ \textcolor{keyword}{sizeof}(cantidad));}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_lista_d_circular_acb698131ccdb037a070842ee50a42c2f}{forEach}}([\&archivo](\textcolor{keyword}{const}\ T\&\ dato)\ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ dato.serializar(archivo);}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00205\ \ \ \ \ \}}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ U\ =\ T>}
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keyword}{typename}\ std::enable\_if<std::is\_member\_function\_pointer<\textcolor{keyword}{decltype}(\&U::deserializar)>::value>::type}
+\DoxyCodeLine{00213\ \ \ \ \ \mbox{\hyperlink{class_lista_d_circular_a6395710671649135aa77fcc55aa2807a}{cargarDesdeArchivo}}(\textcolor{keyword}{const}\ std::string\&\ nombreArchivo)\ \{}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ std::ifstream\ archivo(nombreArchivo,\ std::ios::binary);}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!archivo)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_lista_d_circular_ad5642c67791d0d5256f8f86cf1c25f6c}{limpiar}}();}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ cantidad\ =\ 0;}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ archivo.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&cantidad),\ \textcolor{keyword}{sizeof}(cantidad));}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ cantidad;\ ++i)\ \{}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ T\ dato;}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ dato.deserializar(archivo);}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_lista_d_circular_ac4af57dcf7f8324842f6a3c67461836b}{insertar}}(dato);}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00224\ \ \ \ \ \}}
+\DoxyCodeLine{00225\ \};}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LISTA\_DCIRCULAR\_H}}
+
+\end{DoxyCode}

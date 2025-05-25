@@ -1,0 +1,143 @@
+\doxysection{Gestor\+Citas Class Reference}
+\hypertarget{class_gestor_citas}{}\label{class_gestor_citas}\index{GestorCitas@{GestorCitas}}
+
+
+Gestiona el sistema de citas medicas.  
+
+
+
+
+{\ttfamily \#include $<$Gestor\+Citas.\+h$>$}
+
+Inheritance diagram for Gestor\+Citas\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_gestor_citas}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_gestor_citas_add28bec6e6797d8f86b2dccdd081eeb2}{Gestor\+Citas}} (const std\+::string \&archivo="{}data/citas.\+dat"{})
+\begin{DoxyCompactList}\small\item\em Constructor de la clase \doxylink{class_gestor_citas}{Gestor\+Citas}. \end{DoxyCompactList}\item 
+\Hypertarget{class_gestor_citas_a96a584429f3b87b9804d6704415b0bef}\label{class_gestor_citas_a96a584429f3b87b9804d6704415b0bef} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Gestor\+Citas} ()
+\begin{DoxyCompactList}\small\item\em Destructor de la clase \doxylink{class_gestor_citas}{Gestor\+Citas}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_gestor_citas_a94ccb163bcbe27b371a9d92469fa4b78}{mostrar}} () const override
+\begin{DoxyCompactList}\small\item\em Muestra el menu principal. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_gestor_citas_a0e37d99de6d6ff539673b88ab1f91a23}{ejecutar}} () override
+\begin{DoxyCompactList}\small\item\em Ejecuta el ciclo principal del sistema. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_gestor_citas_aa11e6b09f918c5e43de3590d9969ad7a}{agregar\+Opcion}} (const std\+::string \&opcion) override
+\begin{DoxyCompactList}\small\item\em Agrega una opcion al menu (extensible). \end{DoxyCompactList}\item 
+\Hypertarget{class_gestor_citas_ad2d7549482f14b5fe994146f15b0cd41}\label{class_gestor_citas_ad2d7549482f14b5fe994146f15b0cd41} 
+void {\bfseries guardar\+Citas} () const
+\begin{DoxyCompactList}\small\item\em Guarda las citas en archivo. \end{DoxyCompactList}\item 
+\Hypertarget{class_gestor_citas_abd77b198eb58d843a84f7451dd63e4eb}\label{class_gestor_citas_abd77b198eb58d843a84f7451dd63e4eb} 
+void {\bfseries cargar\+Citas} ()
+\begin{DoxyCompactList}\small\item\em Carga las citas desde archivo. \end{DoxyCompactList}\item 
+\Hypertarget{class_gestor_citas_a41351f8628d8e9b0fedc479ec7675a42}\label{class_gestor_citas_a41351f8628d8e9b0fedc479ec7675a42} 
+void {\bfseries realizar\+Backup} () const
+\begin{DoxyCompactList}\small\item\em Realiza un backup de las citas. \end{DoxyCompactList}\item 
+\Hypertarget{class_gestor_citas_a93b6fa0a87e75fad62c625eec7c94ede}\label{class_gestor_citas_a93b6fa0a87e75fad62c625eec7c94ede} 
+void {\bfseries restaurar\+Desde\+Backup} ()
+\begin{DoxyCompactList}\small\item\em Restaura las citas desde el backup. \end{DoxyCompactList}\item 
+\Hypertarget{class_gestor_citas_a48bbf08d606a1c20dea3c5776401b45c}\label{class_gestor_citas_a48bbf08d606a1c20dea3c5776401b45c} 
+void {\bfseries mostrar\+Ayuda} () const
+\begin{DoxyCompactList}\small\item\em Muestra la ayuda del sistema. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_lista_d_circular}{Lista\+DCircular}}$<$ \mbox{\hyperlink{class_cita}{Cita}} $>$ \& \mbox{\hyperlink{class_gestor_citas_ae59a8f91eb9a29f32dd8f9fabd673c6a}{get\+Citas}} () const
+\begin{DoxyCompactList}\small\item\em Obtiene la lista de citas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_i_menu}{IMenu}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void {\bfseries agregar\+Opcion} (const string \&opcion)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gestiona el sistema de citas medicas. 
+
+\label{doc-constructors}
+\Hypertarget{class_gestor_citas_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_gestor_citas_add28bec6e6797d8f86b2dccdd081eeb2}\index{GestorCitas@{GestorCitas}!GestorCitas@{GestorCitas}}
+\index{GestorCitas@{GestorCitas}!GestorCitas@{GestorCitas}}
+\doxysubsubsection{\texorpdfstring{GestorCitas()}{GestorCitas()}}
+{\footnotesize\ttfamily \label{class_gestor_citas_add28bec6e6797d8f86b2dccdd081eeb2} 
+Gestor\+Citas\+::\+Gestor\+Citas (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{archivo}{ = {\ttfamily "{}data/citas.dat"{}}}\end{DoxyParamCaption})}
+
+
+
+Constructor de la clase \doxylink{class_gestor_citas}{Gestor\+Citas}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em archivo} & Ruta del archivo de citas. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_gestor_citas_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_gestor_citas_aa11e6b09f918c5e43de3590d9969ad7a}\index{GestorCitas@{GestorCitas}!agregarOpcion@{agregarOpcion}}
+\index{agregarOpcion@{agregarOpcion}!GestorCitas@{GestorCitas}}
+\doxysubsubsection{\texorpdfstring{agregarOpcion()}{agregarOpcion()}}
+{\footnotesize\ttfamily \label{class_gestor_citas_aa11e6b09f918c5e43de3590d9969ad7a} 
+void Gestor\+Citas\+::agregar\+Opcion (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{opcion}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Agrega una opcion al menu (extensible). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em opcion} & Opcion a agregar. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_gestor_citas_a0e37d99de6d6ff539673b88ab1f91a23}\index{GestorCitas@{GestorCitas}!ejecutar@{ejecutar}}
+\index{ejecutar@{ejecutar}!GestorCitas@{GestorCitas}}
+\doxysubsubsection{\texorpdfstring{ejecutar()}{ejecutar()}}
+{\footnotesize\ttfamily \label{class_gestor_citas_a0e37d99de6d6ff539673b88ab1f91a23} 
+void Gestor\+Citas\+::ejecutar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Ejecuta el ciclo principal del sistema. 
+
+
+
+Implements \mbox{\hyperlink{class_i_menu}{IMenu}}.
+
+\Hypertarget{class_gestor_citas_ae59a8f91eb9a29f32dd8f9fabd673c6a}\index{GestorCitas@{GestorCitas}!getCitas@{getCitas}}
+\index{getCitas@{getCitas}!GestorCitas@{GestorCitas}}
+\doxysubsubsection{\texorpdfstring{getCitas()}{getCitas()}}
+{\footnotesize\ttfamily \label{class_gestor_citas_ae59a8f91eb9a29f32dd8f9fabd673c6a} 
+const \mbox{\hyperlink{class_lista_d_circular}{Lista\+DCircular}}$<$ \mbox{\hyperlink{class_cita}{Cita}} $>$ \& Gestor\+Citas\+::get\+Citas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Obtiene la lista de citas. 
+
+\begin{DoxyReturn}{Returns}
+Referencia a la lista de citas. 
+\end{DoxyReturn}
+\Hypertarget{class_gestor_citas_a94ccb163bcbe27b371a9d92469fa4b78}\index{GestorCitas@{GestorCitas}!mostrar@{mostrar}}
+\index{mostrar@{mostrar}!GestorCitas@{GestorCitas}}
+\doxysubsubsection{\texorpdfstring{mostrar()}{mostrar()}}
+{\footnotesize\ttfamily \label{class_gestor_citas_a94ccb163bcbe27b371a9d92469fa4b78} 
+void Gestor\+Citas\+::mostrar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Muestra el menu principal. 
+
+
+
+Implements \mbox{\hyperlink{class_i_menu}{IMenu}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_gestor_citas_8h}{Gestor\+Citas.\+h}}\item 
+Gestor\+Citas.\+cpp\end{DoxyCompactItemize}

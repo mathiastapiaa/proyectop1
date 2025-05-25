@@ -1,0 +1,49 @@
+\doxysection{Persona.\+h}
+\hypertarget{_persona_8h_source}{}\label{_persona_8h_source}\mbox{\hyperlink{_persona_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ PERSONA\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ PERSONA\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_fecha_8h}{Fecha.h}}"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_persona_a3f7e286c137152f539392e39278d664f}{Persona}}\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{string}\ nombre;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{string}\ cedula;}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_fecha}{Fecha}}\ fechaNacimiento;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{class_persona_a3f7e286c137152f539392e39278d664f}{Persona}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ nom\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ ced\ =\ \textcolor{stringliteral}{"{}"{}},\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_fecha}{Fecha}}\&\ fn\ =\ \mbox{\hyperlink{class_fecha}{Fecha}}());}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_persona_a6054c4b887594e8748771598fa734044}{\string~Persona}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_persona_a817c73f3687bbaf12dd76f06eaa5ff4d}{serializar}}(std::ostream\&\ os)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_persona_a04bec21a7508241fab7e5bf5c225a634}{deserializar}}(std::istream\&\ is);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_persona_a9b69d3ceb2fd8303b3a940bf80bf01cb}{getNombre}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_persona_acd215c1b3685860818dfa2bcb247ea2a}{getCedula}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{class_fecha}{Fecha}}\ \mbox{\hyperlink{class_persona_ad1f7ca7daee0ab843354d0a9b3dcef1d}{getFechaNacimiento}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_persona_aefe0d245c256789528c1bd95acf8950b}{getEdad}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_persona_a830e698682a31607d518556945a6cb09}{setNombre}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ nom);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_persona_a587b9b8ceec611f84681bdd14fe33698}{setCedula}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ ced);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_persona_ae108f69625efc44498554d40dbc66036}{setFechaNacimiento}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_fecha}{Fecha}}\&\ fn);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_persona_a7622e7d27927f20d2bf7269ecf1e354d}{mostrarInformacion}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00097\ \};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PERSONA\_H}}
+
+\end{DoxyCode}
