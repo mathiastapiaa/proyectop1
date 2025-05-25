@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.25)  25 MAY 2025 13:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.25)  25 MAY 2025 14:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -743,8 +743,7 @@ tex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count344
 \l__pdf_internal_box=\box123
-)
-No file refman.aux.
+) (refman.aux)
 \openout1 = `refman.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 209.
@@ -827,12 +826,13 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 
 Package backref Info: ** backref set up for natbib ** on input line 209.
 Package hyperref Info: Link coloring ON on input line 209.
+(refman.out) (refman.out)
 \@outlinefile=\write5
 \openout5 = `refman.out'.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-No file refman.toc.
+\Etoc@tf=\read4
 Package hyperref Info: Option `pageanchor' set `false' on input line 217.
 Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 217.
 
@@ -841,7 +841,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 12.9599pt on input line 222.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 10.79993pt on input line 224.
-[1
+ [1
 
 
 {C:/Users/mathi/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/math
@@ -882,10 +882,7 @@ LaTeX Font Info:    Trying to load font information for U+wasy on input line 2.
 File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
 )
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 8.99994pt on input line 3.
-
-
-LaTeX Warning: Reference `class_cita' on page 1 undefined on input line 3.
+(Font)              scaled to size 8.99994pt on input line 4.
 
 
 LaTeX Warning: Reference `class_fecha' on page 1 undefined on input line 4.
@@ -922,9 +919,6 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 ]
 Chapter 2.
 (annotated.tex
-
-LaTeX Warning: Reference `class_cita' on page 3 undefined on input line 3.
-
 
 LaTeX Warning: Reference `class_fecha' on page 3 undefined on input line 4.
 
@@ -978,103 +972,4 @@ LaTeX Warning: Reference `_ingreso_datos_d_l_l_8h_source' on page 5 undefined o
 n input line 9.
 
 
-LaTeX Warning: Reference `_lista_d_circular_8h' on page 5 undefined on input li
-ne 10.
-
-
-LaTeX Warning: Reference `main_8cpp' on page 5 undefined on input line 11.
-
-
-LaTeX Warning: Reference `_paciente_8h' on page 5 undefined on input line 12.
-
-
-LaTeX Warning: Reference `_persona_8h' on page 5 undefined on input line 13.
-
-) [5] [6
-
-]
-Chapter 4.
-(class_cita.tex
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 10
-.
-
-(C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
-LaTeX Font Info:    Trying to load font information for TS1+phv on input line 1
-5.
-
-(C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1phv.fd
-File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
-)
-LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
-(Font)              scaled to size 8.99994pt on input line 15.
-LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 8.09995pt on input line 16.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 16.
-LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 8.09995pt on input line 16.
-
-[7]
-LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 10.79993pt on input line 50.
-LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 7.19995pt on input line 59.
-LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 60.
-
-! Undefined control sequence.
-<argument> ...rtpbox {\@nextchar }\insert@pcolumn 
-                                                  \@endpbox \do@row@strut \o...
-l.67 \begin{DoxyParams}{Parameters}
-                                   
-? 
-! Undefined control sequence.
-<argument> ...rtpbox {\@nextchar }\insert@pcolumn 
-                                                  \@endpbox \do@row@strut \o...
-l.67 \begin{DoxyParams}{Parameters}
-                                   
-? 
-! Missing # inserted in alignment preamble.
-<to be read again> 
-                   &
-l.78 \end{DoxyParams}
-                     
-
-? 
-! Missing # inserted in alignment preamble.
-<to be read again> 
-                   \cr 
-l.78 \end{DoxyParams}
-                     
-
-? 
-! Undefined control sequence.
-\LT@@hline ... \tag_mc_end: \tbl_gdecr_row_count: 
-                                                  }\cr \CT@LT@sep \multispan...
-l.78 \end{DoxyParams}
-                     
-
-? 
-! Undefined control sequence.
-\LT@@hline ... \tag_mc_end: \tbl_gdecr_row_count: 
-                                                  }\cr \noalign {\penalty \@...
-l.78 \end{DoxyParams}
-                     
-
-? 
-! Missing # inserted in alignment preamble.
-<to be read again> 
-                   &
-l.78 \end{DoxyParams}
-                     
-
-? 
-! Missing # inserted in alignment preamble.
-<to be read again> 
-                   \cr 
-l.78 \end{DoxyParams}
-                     
-
-? 
+LaTeX Warning:

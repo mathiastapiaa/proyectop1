@@ -441,9 +441,34 @@ void GestorCitas::agendarCita() {
         return;
     }
 
+
     char nombre[100], cedula[20], motivo[200], fechaNacStr[20];
     ingresarDato("\nNombre del paciente: ", nombre, 100);
-    ingresarDato("Cedula: ", cedula, 20);
+    // Ingreso seguro de cédula solo numérica
+    auto ingresarCedulaNumerica = [] (char* buffer, int maxLen) {
+        int pos = 0;
+        cout << "Cedula: ";
+        while (true) {
+            int ch = getch();
+            if (ch == 13) { // Enter
+                if (pos > 0) break;
+            } else if (ch == 8) { // Backspace
+                if (pos > 0) {
+                    pos--;
+                    cout << "\b \b";
+                }
+            } else if (ch >= '0' && ch <= '9') {
+                if (pos < maxLen - 1) {
+                    buffer[pos++] = (char)ch;
+                    cout << (char)ch;
+                }
+            }
+            // Ignora cualquier otro caracter
+        }
+        buffer[pos] = '\0';
+        cout << endl;
+    };
+    ingresarCedulaNumerica(cedula, 20);
     if (existeCitaConCedula(cedula)) {
         cout << "Error: Ya existe una cita para esta cedula." << endl;
         cout << "Presione cualquier tecla para continuar..." << endl;
@@ -553,10 +578,32 @@ void GestorCitas::mostrarCitas() const {
 }
 
 void GestorCitas::buscarPorCedula() const {
-    string cedula;
-    cout << "Ingrese la cedula a buscar: ";
-    cin >> cedula;
-    cin.ignore();
+    char cedula[20];
+    // Reutiliza la función lambda de ingreso seguro de cédula
+    auto ingresarCedulaNumerica = [] (char* buffer, int maxLen) {
+        int pos = 0;
+        cout << "Ingrese la cedula a buscar: ";
+        while (true) {
+            int ch = getch();
+            if (ch == 13) { // Enter
+                if (pos > 0) break;
+            } else if (ch == 8) { // Backspace
+                if (pos > 0) {
+                    pos--;
+                    cout << "\b \b";
+                }
+            } else if (ch >= '0' && ch <= '9') {
+                if (pos < maxLen - 1) {
+                    buffer[pos++] = (char)ch;
+                    cout << (char)ch;
+                }
+            }
+            // Ignora cualquier otro caracter
+        }
+        buffer[pos] = '\0';
+        cout << endl;
+    };
+    ingresarCedulaNumerica(cedula, 20);
 
     bool encontrada = false;
     citas.forEach([&](const Cita& cita) {
@@ -568,7 +615,7 @@ void GestorCitas::buscarPorCedula() const {
     });
 
     if (!encontrada) {
-    cout << "No se encontraron citas para esta cedula." << endl;
+        cout << "No se encontraron citas para esta cedula." << endl;
     }
 }
 
@@ -579,12 +626,36 @@ void GestorCitas::borrarCita() {
         return;
     }
 
-    string cedula;
+    char cedula[20];
     int dia, mes, anio, hora, minuto;
 
     cout << "\n=== CANCELAR CITA ===" << endl;
-    cout << "Ingrese la cedula del paciente: ";
-    cin >> cedula;
+
+    // Reutiliza la función lambda de ingreso seguro de cédula
+    auto ingresarCedulaNumerica = [] (char* buffer, int maxLen) {
+        int pos = 0;
+        cout << "Ingrese la cedula del paciente: ";
+        while (true) {
+            int ch = getch();
+            if (ch == 13) { // Enter
+                if (pos > 0) break;
+            } else if (ch == 8) { // Backspace
+                if (pos > 0) {
+                    pos--;
+                    cout << "\b \b";
+                }
+            } else if (ch >= '0' && ch <= '9') {
+                if (pos < maxLen - 1) {
+                    buffer[pos++] = (char)ch;
+                    cout << (char)ch;
+                }
+            }
+            // Ignora cualquier otro caracter
+        }
+        buffer[pos] = '\0';
+        cout << endl;
+    };
+    ingresarCedulaNumerica(cedula, 20);
 
     auto leerNumero = [](const string& mensaje, int& valor, int min, int max) {
         while (true) {
