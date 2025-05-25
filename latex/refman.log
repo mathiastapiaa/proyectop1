@@ -972,4 +972,55 @@ LaTeX Warning: Reference `_ingreso_datos_d_l_l_8h_source' on page 5 undefined o
 n input line 9.
 
 
-LaTeX Warning:
+LaTeX Warning: Reference `_lista_d_circular_8h' on page 5 undefined on input li
+ne 10.
+
+
+LaTeX Warning: Reference `main_8cpp' on page 5 undefined on input line 11.
+
+
+LaTeX Warning: Reference `_paciente_8h' on page 5 undefined on input line 12.
+
+
+LaTeX Warning: Reference `_persona_8h' on page 5 undefined on input line 13.
+
+) [5] [6
+
+]
+Chapter 4.
+(class_cita.tex
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 10
+.
+
+(C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+LaTeX Font Info:    Trying to load font information for TS1+phv on input line 1
+5.
+
+(C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1phv.fd
+File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
+)
+LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
+(Font)              scaled to size 8.99994pt on input line 15.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 8.09995pt on input line 16.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 16.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 8.09995pt on input line 16.
+
+[7]
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 10.79993pt on input line 50.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 7.19995pt on input line 59.
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 60.
+
+! Undefined control sequence.
+<argument> ...rtpbox {\@nextchar }\insert@pcolumn 
+                                                  \@endpbox \do@row@strut \o...
+l.67 \begin{DoxyParams}{Parameters}
+                                   
+? 

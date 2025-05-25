@@ -172,6 +172,7 @@ void GestorCitas::mostrarAyuda() const {
     cout << "- Puedes restaurar tus citas desde el backup si borras o pierdes el archivo principal.\n";
     cout << "\nPara regresar al menu principal, presione Enter..." << endl;
     cin.get();
+    system("cls||clear");
 }
 
 Especialidad GestorCitas::seleccionarEspecialista() {
@@ -442,12 +443,13 @@ void GestorCitas::agendarCita() {
     }
 
 
+
     char nombre[100], cedula[20], motivo[200], fechaNacStr[20];
-    ingresarDato("\nNombre del paciente: ", nombre, 100);
-    // Ingreso seguro de cédula solo numérica
-    auto ingresarCedulaNumerica = [] (char* buffer, int maxLen) {
+
+    // Ingreso seguro de nombre (solo letras y espacios)
+    auto ingresarNombreSoloLetras = [] (char* buffer, int maxLen) {
         int pos = 0;
-        cout << "Cedula: ";
+        cout << "\nNombre del paciente: ";
         while (true) {
             int ch = getch();
             if (ch == 13) { // Enter
@@ -457,7 +459,7 @@ void GestorCitas::agendarCita() {
                     pos--;
                     cout << "\b \b";
                 }
-            } else if (ch >= '0' && ch <= '9') {
+            } else if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') || ch == ' ' || ch == 160 || ch == 130 || ch == 181 || ch == 144 || ch == 214 || ch == 224) { // letras y espacios (incluye tildes comunes)
                 if (pos < maxLen - 1) {
                     buffer[pos++] = (char)ch;
                     cout << (char)ch;
@@ -468,7 +470,37 @@ void GestorCitas::agendarCita() {
         buffer[pos] = '\0';
         cout << endl;
     };
-    ingresarCedulaNumerica(cedula, 20);
+    ingresarNombreSoloLetras(nombre, 100);
+
+    // Ingreso seguro de cédula solo numérica y exactamente 10 dígitos
+    auto ingresarCedulaNumerica10 = [] (char* buffer, int maxLen) {
+        int pos = 0;
+        cout << "Cedula: ";
+        while (true) {
+            int ch = getch();
+            if (ch == 13) { // Enter
+                if (pos == 10) break;
+                else {
+                    cout << "\nLa cedula debe tener exactamente 10 digitos.\n";
+                    continue;
+                }
+            } else if (ch == 8) { // Backspace
+                if (pos > 0) {
+                    pos--;
+                    cout << "\b \b";
+                }
+            } else if (ch >= '0' && ch <= '9') {
+                if (pos < 10) {
+                    buffer[pos++] = (char)ch;
+                    cout << (char)ch;
+                }
+            }
+            // Ignora cualquier otro caracter
+        }
+        buffer[pos] = '\0';
+        cout << endl;
+    };
+    ingresarCedulaNumerica10(cedula, 20);
     if (existeCitaConCedula(cedula)) {
         cout << "Error: Ya existe una cita para esta cedula." << endl;
         cout << "Presione cualquier tecla para continuar..." << endl;
@@ -477,25 +509,50 @@ void GestorCitas::agendarCita() {
         return;
     }
 
+    // Ingreso seguro de fecha de nacimiento (solo números y '/'), usando getch
+    auto ingresarFechaNacimientoSeguro = [] (char* buffer, int maxLen) {
+        int pos = 0;
+        cout << "Fecha de nacimiento (DD/MM/AAAA): ";
+        while (true) {
+            int ch = getch();
+            if (ch == 13) { // Enter
+                if (pos > 0) break;
+            } else if (ch == 8) { // Backspace
+                if (pos > 0) {
+                    pos--;
+                    cout << "\b \b";
+                }
+            } else if ((ch >= '0' && ch <= '9') || ch == '/') {
+                if (pos < maxLen - 1) {
+                    buffer[pos++] = (char)ch;
+                    cout << (char)ch;
+                }
+            }
+            // Ignora cualquier otro caracter
+        }
+        buffer[pos] = '\0';
+        cout << endl;
+    };
+
     Fecha fechaNacimiento;
     bool fechaValida = false;
     do {
-        ingresarDato("Fecha de nacimiento (DD/MM/AAAA): ", fechaNacStr, 20);
+        ingresarFechaNacimientoSeguro(fechaNacStr, 20);
         int d = 0, m = 0, a = 0;
         char sep1 = '/', sep2 = '/';
         std::istringstream iss(fechaNacStr);
         iss >> d >> sep1 >> m >> sep2 >> a;
         if (iss.fail() || sep1 != '/' || sep2 != '/' || d < 1 || m < 1 || a < 1900) {
-        cout << "Entrada no valida. Intente de nuevo.\n";
+            cout << "Entrada no valida. Intente de nuevo.\n";
             continue;
         }
         if (m < 1 || m > 12) {
-        cout << "Mes no valido. Debe estar entre 1 y 12.\n";
+            cout << "Mes no valido. Debe estar entre 1 y 12.\n";
             continue;
         }
         int maxDias = Fecha::diasEnMesStatic(m, a);
         if (d < 1 || d > maxDias) {
-        cout << "Dia no valido para el mes seleccionado.\n";
+            cout << "Dia no valido para el mes seleccionado.\n";
             continue;
         }
         try {
@@ -506,9 +563,10 @@ void GestorCitas::agendarCita() {
         }
         fechaValida = validarFechaNacimiento(fechaNacimiento);
         if (!fechaValida) {
-        cout << "Fecha no valida. Debe ser una fecha pasada (maximo 100 anos atras).\n";
+            cout << "Fecha no valida. Debe ser una fecha pasada (maximo 100 anos atras).\n";
         }
     } while (!fechaValida);
+
     ingresarDato("Motivo de la cita: ", motivo, 200);
 
     Cita nuevaCita(Paciente(nombre, cedula, fechaNacimiento), fechaCita, horaCita, esp, motivo);
@@ -564,6 +622,7 @@ bool GestorCitas::validarDisponibilidad(const Fecha& fecha, const Hora& hora, Es
 }
 
 void GestorCitas::mostrarCitas() const {
+    system("cls||clear");
     cout << "\n=== CITAS PROGRAMADAS ===" << endl;
     if (citas.estaVacia()) {
     cout << "No hay citas programadas." << endl;
@@ -620,6 +679,7 @@ void GestorCitas::buscarPorCedula() const {
 }
 
 void GestorCitas::borrarCita() {
+    system("cls||clear");
     mostrarCitas();
     if (citas.estaVacia()) {
     cout << "No hay citas para cancelar." << endl;
@@ -701,7 +761,7 @@ void GestorCitas::guardarCitas() const {
 
 void GestorCitas::cargarCitas() {
     citas.cargarDesdeArchivo(archivoCitas);
-    cout << "Cargadas " << citas.getTamanio() << " citas desde el archivo." << endl;
+    cout << "Citas cargadas: " << citas.getTamanio() <<endl;
 }
 
 void GestorCitas::agregarOpcion(const string& opcion) {
