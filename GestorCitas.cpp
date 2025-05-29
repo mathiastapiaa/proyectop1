@@ -11,10 +11,11 @@
 #include <conio.h>
 #include <algorithm>
 #include "GestorCitas.h"
+#include "IngresoDatosDLL.h"
 
 using namespace std;
 
-GestorCitas::GestorCitas(const string& archivo) : archivoCitas(archivo) {
+GestorCitas::   GestorCitas(const string& archivo) : archivoCitas(archivo) {
     inicializarFeriados();
     cargarCitas();
 }
@@ -123,21 +124,30 @@ void GestorCitas::mostrar() const {
 }
 
 void GestorCitas::ejecutar() {
-    int opcion;
+    int opcion = 0;
     do {
         mostrar();
-        cout << "Seleccione una opcion: ";
-        cin >> opcion;
-        
-        if (cin.fail()) {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Entrada no valida. Por favor ingrese un numero." << endl;
-            continue;
+        // Entrada segura solo números 1-8 usando getch
+        opcion = 0;
+        cout << "Seleccione una opcion (1-8): ";
+        string input;
+        while (true) {
+            int ch = getch();
+            if (ch == 13) { // Enter
+                if (!input.empty()) break;
+            } else if (ch == 8) { // Backspace
+                if (!input.empty()) {
+                    input.pop_back();
+                    cout << "\b \b";
+                }
+            } else if (ch >= '1' && ch <= '8' && input.empty()) {
+                input += (char)ch;
+                cout << (char)ch;
+            }
         }
-        
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        
+        cout << endl;
+        opcion = input.empty() ? 0 : (input[0] - '0');
+
         switch (opcion) {
             case 1: agendarCita(); break;
             case 2: mostrarCitas(); break;
@@ -176,19 +186,28 @@ void GestorCitas::mostrarAyuda() const {
 }
 
 Especialidad GestorCitas::seleccionarEspecialista() {
-    int opcion;
+    int opcion = 0;
     do {
         system("cls||clear");
         mostrarMenuEspecialistas();
-        cout << "Opcion: ";
-        cin >> opcion;
-        if (cin.fail()) {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Entrada no valida. Por favor ingrese un numero del 1 al 5." << endl;
-            continue;
+        cout << "Opcion (1-5): ";
+        std::string input;
+        while (true) {
+            int ch = getch();
+            if (ch == 13) { // Enter
+                if (!input.empty()) break;
+            } else if (ch == 8) { // Backspace
+                if (!input.empty()) {
+                    input.pop_back();
+                    cout << "\b \b";
+                }
+            } else if (ch >= '1' && ch <= '5' && input.empty()) {
+                input += (char)ch;
+                cout << (char)ch;
+            }
         }
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << endl;
+        opcion = input.empty() ? 0 : (input[0] - '0');
         switch(opcion) {
             case 1: return Especialidad::CARDIOLOGIA;
             case 2: return Especialidad::PEDIATRIA;
@@ -411,20 +430,12 @@ Hora GestorCitas::seleccionarHora(const Fecha& fecha, Especialidad esp) {
 void GestorCitas::agendarCita() {
     Especialidad esp = seleccionarEspecialista();
     Fecha fechaCita = seleccionarFecha(esp);
-    if (!fechaCita.esFechaValida()) {
-        // Si se presionó ESC en seleccionarFecha, volver al menú principal
-        return;
-    }
+    if (!fechaCita.esFechaValida()) return;
     Hora horaCita = seleccionarHora(fechaCita, esp);
-    if (!horaCita.esHoraValida()) {
-        // Si se presionó ESC en seleccionarHora, volver al menú principal
-        return;
-    }
-    // Si se seleccionó fecha y hora válidas, continuar con el flujo normal
+    if (!horaCita.esHoraValida()) return;
     system("cls||clear");
     cout << "=== INGRESE DATOS DEL PACIENTE ===" << endl;
 
-    // --- INTEGRACIÓN DEL DLL PARA INGRESO DE DATOS ---
     HINSTANCE hDll = LoadLibrary(TEXT("IngresoDatosDLL.dll"));
     if (!hDll) {
         cout << "No se pudo cargar el DLL de ingreso de datos." << endl;
@@ -442,11 +453,9 @@ void GestorCitas::agendarCita() {
         return;
     }
 
+    char nombre[100], cedula[11], motivo[200], fechaNacStr[20];
 
-
-    char nombre[100], cedula[20], motivo[200], fechaNacStr[20];
-
-    // Ingreso seguro de nombre (solo letras y espacios)
+    // Nombre: solo letras y espacios (validación con getch)
     auto ingresarNombreSoloLetras = [] (char* buffer, int maxLen) {
         int pos = 0;
         cout << "\nNombre del paciente: ";
@@ -459,48 +468,43 @@ void GestorCitas::agendarCita() {
                     pos--;
                     cout << "\b \b";
                 }
-            } else if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') || ch == ' ' || ch == 160 || ch == 130 || ch == 181 || ch == 144 || ch == 214 || ch == 224) { // letras y espacios (incluye tildes comunes)
+            } else if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') || ch == ' ' || ch == 160 || ch == 130 || ch == 181 || ch == 144 || ch == 214 || ch == 224) {
                 if (pos < maxLen - 1) {
                     buffer[pos++] = (char)ch;
                     cout << (char)ch;
                 }
             }
-            // Ignora cualquier otro caracter
         }
         buffer[pos] = '\0';
         cout << endl;
     };
     ingresarNombreSoloLetras(nombre, 100);
 
-    // Ingreso seguro de cédula solo numérica y exactamente 10 dígitos
-    auto ingresarCedulaNumerica10 = [] (char* buffer, int maxLen) {
+    // Cedula: solo 10 dígitos, solo números usando getch
+    auto ingresarCedulaSoloNumeros = [] (char* buffer, int maxLen) {
         int pos = 0;
-        cout << "Cedula: ";
+        cout << "Cedula (10 digitos): ";
         while (true) {
             int ch = getch();
             if (ch == 13) { // Enter
                 if (pos == 10) break;
-                else {
-                    cout << "\nLa cedula debe tener exactamente 10 digitos.\n";
-                    continue;
-                }
             } else if (ch == 8) { // Backspace
                 if (pos > 0) {
                     pos--;
                     cout << "\b \b";
                 }
-            } else if (ch >= '0' && ch <= '9') {
-                if (pos < 10) {
-                    buffer[pos++] = (char)ch;
-                    cout << (char)ch;
-                }
+            } else if (ch >= '0' && ch <= '9' && pos < 10) {
+                buffer[pos++] = (char)ch;
+                cout << (char)ch;
             }
-            // Ignora cualquier otro caracter
         }
         buffer[pos] = '\0';
         cout << endl;
     };
-    ingresarCedulaNumerica10(cedula, 20);
+    do {
+        ingresarCedulaSoloNumeros(cedula, 11);
+    } while (strlen(cedula) != 10);
+
     if (existeCitaConCedula(cedula)) {
         cout << "Error: Ya existe una cita para esta cedula." << endl;
         cout << "Presione cualquier tecla para continuar..." << endl;
@@ -509,7 +513,7 @@ void GestorCitas::agendarCita() {
         return;
     }
 
-    // Ingreso seguro de fecha de nacimiento (solo números y '/'), usando getch
+    // Fecha de nacimiento: solo números y '/'
     auto ingresarFechaNacimientoSeguro = [] (char* buffer, int maxLen) {
         int pos = 0;
         cout << "Fecha de nacimiento (DD/MM/AAAA): ";
@@ -528,7 +532,6 @@ void GestorCitas::agendarCita() {
                     cout << (char)ch;
                 }
             }
-            // Ignora cualquier otro caracter
         }
         buffer[pos] = '\0';
         cout << endl;
@@ -637,32 +640,35 @@ void GestorCitas::mostrarCitas() const {
 }
 
 void GestorCitas::buscarPorCedula() const {
-    char cedula[20];
-    // Reutiliza la función lambda de ingreso seguro de cédula
-    auto ingresarCedulaNumerica = [] (char* buffer, int maxLen) {
+    char cedula[11] = {0};
+    HINSTANCE hDll = LoadLibrary(TEXT("IngresoDatosDLL.dll"));
+    typedef void (__stdcall *IngresarDatoFunc)(const char*, char*, int);
+    IngresarDatoFunc ingresarDato = (IngresarDatoFunc)GetProcAddress(hDll, "ingresarDato");
+
+    // Cedula: solo 10 dígitos, solo números usando getch
+    auto ingresarCedulaSoloNumeros = [] (char* buffer, int maxLen) {
         int pos = 0;
-        cout << "Ingrese la cedula a buscar: ";
+        cout << "Ingrese la cedula a buscar (10 digitos): ";
         while (true) {
             int ch = getch();
             if (ch == 13) { // Enter
-                if (pos > 0) break;
+                if (pos == 10) break;
             } else if (ch == 8) { // Backspace
                 if (pos > 0) {
                     pos--;
                     cout << "\b \b";
                 }
-            } else if (ch >= '0' && ch <= '9') {
-                if (pos < maxLen - 1) {
-                    buffer[pos++] = (char)ch;
-                    cout << (char)ch;
-                }
+            } else if (ch >= '0' && ch <= '9' && pos < 10) {
+                buffer[pos++] = (char)ch;
+                cout << (char)ch;
             }
-            // Ignora cualquier otro caracter
         }
         buffer[pos] = '\0';
         cout << endl;
     };
-    ingresarCedulaNumerica(cedula, 20);
+    do {
+        ingresarCedulaSoloNumeros(cedula, 11);
+    } while (strlen(cedula) != 10);
 
     bool encontrada = false;
     citas.forEach([&](const Cita& cita) {
@@ -676,67 +682,87 @@ void GestorCitas::buscarPorCedula() const {
     if (!encontrada) {
         cout << "No se encontraron citas para esta cedula." << endl;
     }
+    FreeLibrary(hDll);
 }
 
 void GestorCitas::borrarCita() {
     system("cls||clear");
     mostrarCitas();
     if (citas.estaVacia()) {
-    cout << "No hay citas para cancelar." << endl;
+        cout << "No hay citas para cancelar." << endl;
         return;
     }
 
-    char cedula[20];
+    char cedula[11] = {0}, buffer[8] = {0};
     int dia, mes, anio, hora, minuto;
+
+    HINSTANCE hDll = LoadLibrary(TEXT("IngresoDatosDLL.dll"));
+    typedef void (__stdcall *IngresarDatoFunc)(const char*, char*, int);
+    IngresarDatoFunc ingresarDato = (IngresarDatoFunc)GetProcAddress(hDll, "ingresarDato");
 
     cout << "\n=== CANCELAR CITA ===" << endl;
 
-    // Reutiliza la función lambda de ingreso seguro de cédula
-    auto ingresarCedulaNumerica = [] (char* buffer, int maxLen) {
+    // Cedula: solo 10 dígitos, solo números usando getch
+    auto ingresarCedulaSoloNumeros = [] (char* buffer, int maxLen) {
         int pos = 0;
-        cout << "Ingrese la cedula del paciente: ";
+        cout << "Ingrese la cedula del paciente (10 digitos): ";
         while (true) {
             int ch = getch();
             if (ch == 13) { // Enter
-                if (pos > 0) break;
+                if (pos == 10) break;
             } else if (ch == 8) { // Backspace
                 if (pos > 0) {
                     pos--;
                     cout << "\b \b";
                 }
-            } else if (ch >= '0' && ch <= '9') {
-                if (pos < maxLen - 1) {
-                    buffer[pos++] = (char)ch;
-                    cout << (char)ch;
-                }
+            } else if (ch >= '0' && ch <= '9' && pos < 10) {
+                buffer[pos++] = (char)ch;
+                cout << (char)ch;
             }
-            // Ignora cualquier otro caracter
         }
         buffer[pos] = '\0';
         cout << endl;
     };
-    ingresarCedulaNumerica(cedula, 20);
+    do {
+        ingresarCedulaSoloNumeros(cedula, 11);
+    } while (strlen(cedula) != 10);
 
-    auto leerNumero = [](const string& mensaje, int& valor, int min, int max) {
+    // Día, Mes, Año, Hora, Minuto: solo números válidos y longitud adecuada
+    auto ingresarNumeroRango = [](const char* mensaje, int min, int max, int maxLen) -> int {
+        char buffer[5] = {0};
+        int pos = 0;
+        int valor = 0;
         while (true) {
             cout << mensaje;
-            if (cin >> valor && valor >= min && valor <= max) {
-                break;
-            } else {
-                cout << "Error! Ingrese un valor entre " << min << " y " << max << ": ";
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            pos = 0;
+            while (true) {
+                int ch = getch();
+                if (ch == 13) { // Enter
+                    if (pos > 0) break;
+                } else if (ch == 8) { // Backspace
+                    if (pos > 0) {
+                        pos--;
+                        cout << "\b \b";
+                    }
+                } else if (ch >= '0' && ch <= '9' && pos < maxLen) {
+                    buffer[pos++] = (char)ch;
+                    cout << (char)ch;
+                }
             }
+            buffer[pos] = '\0';
+            cout << endl;
+            valor = atoi(buffer);
+            if (valor >= min && valor <= max) break;
+            cout << "Valor fuera de rango. Intente de nuevo.\n";
         }
+        return valor;
     };
 
-    leerNumero("Ingrese el dia de la cita (1-31): ", dia, 1, 31);
-    leerNumero("Ingrese el mes de la cita (1-12): ", mes, 1, 12);
-    leerNumero("Ingrese el ano de la cita (2000-2100): ", anio, 2000, 2100);
-    leerNumero("Ingrese la hora de la cita (0-23): ", hora, 0, 23);
-    leerNumero("Ingrese los minutos de la cita (0-59): ", minuto, 0, 59);
-
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    dia = ingresarNumeroRango("Ingrese el dia de la cita (1-31): ", 1, 31, 2);
+    mes = ingresarNumeroRango("Ingrese el mes de la cita (1-12): ", 1, 12, 2);
+    anio = ingresarNumeroRango("Ingrese el ano de la cita (2000-2100): ", 2000, 2100, 4);
+    hora = ingresarNumeroRango("Ingrese la hora de la cita (0-23): ", 0, 23, 2);
+    minuto = ingresarNumeroRango("Ingrese los minutos de la cita (0-59): ", 0, 59, 2);
 
     Fecha fecha(dia, mes, anio);
     Hora horaCita(hora, minuto, 0);
@@ -749,6 +775,7 @@ void GestorCitas::borrarCita() {
     } else {
         cout << "No se encontro la cita especificada." << endl;
     }
+    FreeLibrary(hDll);
 }
 
 void GestorCitas::guardarCitas() const {
