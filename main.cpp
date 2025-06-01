@@ -2,7 +2,7 @@
  * @file main.cpp
  * @brief Punto de entrada del sistema de citas medicas.
  */
-
+    
 #ifndef NOMINMAX
 #define NOMINMAX
 #endif

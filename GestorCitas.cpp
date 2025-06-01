@@ -13,7 +13,11 @@
 #include "GestorCitas.h"
 #include "IngresoDatosDLL.h"
 
+
 using namespace std;
+
+// Prototipo para la función de validación de cédula ecuatoriana
+bool validarCedulaEcuatoriana(const char* cedula);
 
 GestorCitas::   GestorCitas(const string& archivo) : archivoCitas(archivo) {
     inicializarFeriados();
@@ -503,7 +507,10 @@ void GestorCitas::agendarCita() {
     };
     do {
         ingresarCedulaSoloNumeros(cedula, 11);
-    } while (strlen(cedula) != 10);
+        if (!validarCedulaEcuatoriana(cedula)) {
+            cout << "Cedula no valida. Intente de nuevo." << endl;
+        }
+    } while (strlen(cedula) != 10 || !validarCedulaEcuatoriana(cedula));
 
     if (existeCitaConCedula(cedula)) {
         cout << "Error: Ya existe una cita para esta cedula." << endl;
@@ -571,7 +578,6 @@ void GestorCitas::agendarCita() {
     } while (!fechaValida);
 
     ingresarDato("Motivo de la cita: ", motivo, 200);
-
     Cita nuevaCita(Paciente(nombre, cedula, fechaNacimiento), fechaCita, horaCita, esp, motivo);
     citas.insertar(nuevaCita);
     FreeLibrary(hDll);
@@ -668,7 +674,10 @@ void GestorCitas::buscarPorCedula() const {
     };
     do {
         ingresarCedulaSoloNumeros(cedula, 11);
-    } while (strlen(cedula) != 10);
+        if (!validarCedulaEcuatoriana(cedula)) {
+            cout << "Cedula no valida. Intente de nuevo." << endl;
+        }
+    } while (strlen(cedula) != 10 || !validarCedulaEcuatoriana(cedula));
 
     bool encontrada = false;
     citas.forEach([&](const Cita& cita) {
@@ -725,7 +734,10 @@ void GestorCitas::borrarCita() {
     };
     do {
         ingresarCedulaSoloNumeros(cedula, 11);
-    } while (strlen(cedula) != 10);
+        if (!validarCedulaEcuatoriana(cedula)) {
+            cout << "Cedula no valida. Intente de nuevo." << endl;
+        }
+    } while (strlen(cedula) != 10 || !validarCedulaEcuatoriana(cedula));
 
     // Día, Mes, Año, Hora, Minuto: solo números válidos y longitud adecuada
     auto ingresarNumeroRango = [](const char* mensaje, int min, int max, int maxLen) -> int {
@@ -827,4 +839,23 @@ void GestorCitas::restaurarDesdeBackup() {
 
     archivoOriginal << archivoBackup.rdbuf();
     std::cout << "Restauracion desde backup realizada exitosamente." << std::endl;
+}
+
+bool validarCedulaEcuatoriana(const char* cedula) {
+    if (strlen(cedula) != 10) return false;
+    int provincia = (cedula[0] - '0') * 10 + (cedula[1] - '0');
+    if (provincia < 1 || provincia > 24) return false;
+    if (cedula[2] < '0' || cedula[2] > '5') return false;
+
+    int suma = 0;
+    for (int i = 0; i < 9; i++) {
+        int dig = cedula[i] - '0';
+        if (i % 2 == 0) { // posiciones impares
+            dig *= 2;
+            if (dig > 9) dig -= 9;
+        }
+        suma += dig;
+    }
+    int verificador = (10 - (suma % 10)) % 10;
+    return verificador == (cedula[9] - '0');
 }
