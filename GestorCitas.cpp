@@ -512,8 +512,15 @@ void GestorCitas::agendarCita() {
         }
     } while (strlen(cedula) != 10 || !validarCedulaEcuatoriana(cedula));
 
-    if (existeCitaConCedula(cedula)) {
-        cout << "Error: Ya existe una cita para esta cedula." << endl;
+    // Permitir solo una cita por cedula, por dia
+    bool yaTieneCitaEseDia = false;
+    citas.forEach([&](const Cita& cita) {
+        if (cita.getPaciente().getCedula() == cedula && cita.getFecha() == fechaCita) {
+            yaTieneCitaEseDia = true;
+        }
+    });
+    if (yaTieneCitaEseDia) {
+        cout << "Error: Ya existe una cita para esta cedula en ese dia." << endl;
         cout << "Presione cualquier tecla para continuar..." << endl;
         getch();
         FreeLibrary(hDll);
